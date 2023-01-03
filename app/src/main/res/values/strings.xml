@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Student Scheduler</string>
+    <string name="tap_to_enter">Tap to Enter</string>
+    <string name="term_1">Term 1</string>
+    <string name="start_date">Start Date</string>
+    <string name="end_date">End Date</string>
+    <string name="courses">Courses</string>
+    <string name="todo">TODO</string>
 </resources>

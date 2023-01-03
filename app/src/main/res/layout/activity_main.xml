@@ -6,13 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".Activities.MainActivity">
 
-    <TextView
+    <Button
+        android:id="@+id/enterButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Tap To Enter"
+        tools:layout_editor_absoluteX="134dp"
+        tools:layout_editor_absoluteY="341dp" />
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="127dp"
+        android:layout_height="195dp"
+        app:srcCompat="@android:mipmap/sym_def_app_icon"
+        tools:layout_editor_absoluteX="139dp"
+        tools:layout_editor_absoluteY="85dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
