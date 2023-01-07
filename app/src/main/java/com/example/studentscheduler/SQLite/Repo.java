@@ -8,8 +8,8 @@ import com.example.studentscheduler.Entities.AssessmentEntity;
 
 import java.util.List;
 
-public class Database {
-    public Database(Application application) {
+public class Repo {
+    public Repo(Application application) {
     }
 
     public void insert(AssessmentEntity ae) {
