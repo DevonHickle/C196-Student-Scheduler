@@ -1,5 +1,8 @@
 package com.example.studentscheduler.Entities;
 
+import androidx.room.Entity;
+
+@Entity(tableName = "courses")
 public class CourseEntity {
     public CourseEntity(int i, String s, String s1, String s2) {
     }
