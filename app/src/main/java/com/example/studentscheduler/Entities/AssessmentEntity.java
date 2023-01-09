@@ -33,7 +33,7 @@ public class AssessmentEntity extends UtilEntity {
     }
 
     // Getters
-    public int getID() {
+    public int getId() {
         return id;
     }
 
@@ -58,7 +58,7 @@ public class AssessmentEntity extends UtilEntity {
     }
 
     // Setters
-    public void setID(int id) {
+    public void setId(int id) {
         this.id = id;
     }
 

@@ -14,7 +14,7 @@ import com.example.studentscheduler.Util.UtilEntity;
             childColumns = "courseID",
             onDelete = CASCADE
     ))
-public class NoteEntity  extends UtilEntity {
+public class NoteEntity extends UtilEntity {
     @PrimaryKey(autoGenerate = true)
 
     private int id;
@@ -22,7 +22,7 @@ public class NoteEntity  extends UtilEntity {
     private String name;
     private String content;
 
-    public NoteEntity(int couseID, String name, String content) {
+    public NoteEntity(int courseID, String name, String content) {
         this.courseID = courseID;
         this.name = name;
         this.content = content;
@@ -33,7 +33,7 @@ public class NoteEntity  extends UtilEntity {
         return courseID;
     }
 
-    public int getID() {
+    public int getId() {
         return id;
     }
 
@@ -46,7 +46,7 @@ public class NoteEntity  extends UtilEntity {
     }
 
     //Setters
-    public void setID(int id) {
+    public void setId(int id) {
         this.id = id;
     }
 

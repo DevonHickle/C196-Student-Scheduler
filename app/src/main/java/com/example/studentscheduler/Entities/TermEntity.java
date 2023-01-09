@@ -21,7 +21,7 @@ public class TermEntity extends UtilEntity {
     }
 
     //Getters
-    public int getID() {
+    public int getId() {
         return id;
     }
 
@@ -38,7 +38,7 @@ public class TermEntity extends UtilEntity {
     }
 
     //Setters
-    public void setID(int id) {
+    public void setId(int id) {
         this.id = id;
     }
 

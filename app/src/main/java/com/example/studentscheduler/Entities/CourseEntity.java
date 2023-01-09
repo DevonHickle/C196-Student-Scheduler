@@ -40,80 +40,82 @@ public class CourseEntity extends UtilEntity {
         this.MentorEmail = MentorEmail;
     }
 
+    // Getters
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int getTermID() {
         return termID;
     }
 
-    public void setTermID(int termID) {
-        this.termID = termID;
-    }
-
     public String getTitle() {
         return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
-    }
-
     public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
-    }
-
-    public boolean isAlert() {
+    public boolean getAlert() {
         return alert;
-    }
-
-    public void setAlert(boolean alert) {
-        this.alert = alert;
     }
 
     public int getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
     public String getMentorName() {
         return MentorName;
-    }
-
-    public void setMentorName(String MentorName) {
-        this.MentorName = MentorName;
     }
 
     public String getMentorPhone() {
         return MentorPhone;
     }
 
-    public void setMentorPhone(String MentorPhone) {
-        this.MentorPhone = MentorPhone;
-    }
-
     public String getMentorEmail() {
         return MentorEmail;
+    }
+
+    // Setters
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setTermID(int termID) {
+        this.termID = termID;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
+    public void setAlert(boolean alert) {
+        this.alert = alert;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public void setMentorName(String MentorName) {
+        this.MentorName = MentorName;
+    }
+
+    public void setMentorPhone(String MentorPhone) {
+        this.MentorPhone = MentorPhone;
     }
 
     public void setMentorEmail(String MentorEmail) {
