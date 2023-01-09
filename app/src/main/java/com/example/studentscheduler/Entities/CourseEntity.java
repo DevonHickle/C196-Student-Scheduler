@@ -24,20 +24,20 @@ public class CourseEntity extends UtilEntity {
     private String endDate;
     private boolean alert;
     private int status;
-    private String MentorName;
-    private String MentorPhone;
-    private String MentorEmail;
+    private String instructorName;
+    private String instructorPhone;
+    private String instructorEmail;
 
-    public CourseEntity(int termID, String title, String startDate, String endDate, boolean alert, int status, String MentorName, String MentorPhone, String MentorEmail) {
+    public CourseEntity(int termID, String title, String startDate, String endDate, boolean alert, int status, String instructorName, String instructorPhone, String instructorEmail) {
         this.termID = termID;
         this.title = title;
         this.startDate = startDate;
         this.endDate = endDate;
         this.alert = alert;
         this.status = status;
-        this.MentorName = MentorName;
-        this.MentorPhone = MentorPhone;
-        this.MentorEmail = MentorEmail;
+        this.instructorName = instructorName;
+        this.instructorPhone = instructorPhone;
+        this.instructorEmail = instructorEmail;
     }
 
     // Getters
@@ -69,16 +69,16 @@ public class CourseEntity extends UtilEntity {
         return status;
     }
 
-    public String getMentorName() {
-        return MentorName;
+    public String getInstructorName() {
+        return instructorName;
     }
 
-    public String getMentorPhone() {
-        return MentorPhone;
+    public String getInstructorPhone() {
+        return instructorPhone;
     }
 
-    public String getMentorEmail() {
-        return MentorEmail;
+    public String getInstructorEmail() {
+        return instructorEmail;
     }
 
     // Setters
@@ -110,15 +110,9 @@ public class CourseEntity extends UtilEntity {
         this.status = status;
     }
 
-    public void setMentorName(String MentorName) {
-        this.MentorName = MentorName;
-    }
+    public void setInstructorName(String instructorName) {this.instructorName = instructorName;}
 
-    public void setMentorPhone(String MentorPhone) {
-        this.MentorPhone = MentorPhone;
-    }
+    public void setInstructorPhone(String instructorPhone) {this.instructorPhone = instructorPhone;}
 
-    public void setMentorEmail(String MentorEmail) {
-        this.MentorEmail = MentorEmail;
-    }
+    public void setInstructorEmail(String instructorEmail) {this.instructorEmail = instructorEmail;}
 }
