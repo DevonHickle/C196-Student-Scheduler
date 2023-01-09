@@ -10,7 +10,7 @@ import com.example.studentscheduler.Entities.CourseEntity;
 import com.example.studentscheduler.Entities.NoteEntity;
 import com.example.studentscheduler.Entities.TermEntity;
 
-public interface DAO {
+public interface UtilDAO {
     // Insert
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(TermEntity entity);

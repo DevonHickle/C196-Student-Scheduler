@@ -8,11 +8,11 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.example.studentscheduler.Entities.AssessmentEntity;
-import com.example.studentscheduler.Util.DAO;
+import com.example.studentscheduler.Util.UtilDAO;
 
 import java.util.List;
 
-public interface AssessmentDAO extends DAO {
+public interface AssessmentDAO extends UtilDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(AssessmentEntity assessmentEntity);
 

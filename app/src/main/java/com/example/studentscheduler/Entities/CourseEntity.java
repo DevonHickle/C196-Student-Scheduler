@@ -6,13 +6,15 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
+import com.example.studentscheduler.Util.UtilEntity;
+
 @Entity(tableName = "courses",
     foreignKeys = @ForeignKey(entity = TermEntity.class,
             parentColumns = "id",
             childColumns = "termID",
             onDelete = CASCADE
     ))
-public class CourseEntity extends com.example.studentscheduler.Util.Entity {
+public class CourseEntity extends UtilEntity {
     @PrimaryKey(autoGenerate = true)
 
     private int id;

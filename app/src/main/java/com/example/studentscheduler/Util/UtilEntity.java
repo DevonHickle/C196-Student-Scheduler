@@ -1,4 +1,4 @@
 package com.example.studentscheduler.Util;
 
-public class Entity {
+public class UtilEntity {
 }

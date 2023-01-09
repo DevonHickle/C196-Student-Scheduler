@@ -9,12 +9,12 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.example.studentscheduler.Entities.TermEntity;
-import com.example.studentscheduler.Util.DAO;
+import com.example.studentscheduler.Util.UtilDAO;
 
 import java.util.List;
 
 @Dao
-public interface TermDAO extends DAO {
+public interface TermDAO extends UtilDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(TermEntity termEntity);
 
