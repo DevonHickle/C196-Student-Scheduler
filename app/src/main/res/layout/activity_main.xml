@@ -10,15 +10,20 @@
         android:id="@+id/enterButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tap To Enter"
-        tools:layout_editor_absoluteX="134dp"
-        tools:layout_editor_absoluteY="341dp" />
+        android:layout_marginBottom="16dp"
+        android:text="@string/enterButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="127dp"
         android:layout_height="195dp"
+        app:layout_constraintBottom_toTopOf="@+id/enterButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:mipmap/sym_def_app_icon"
-        tools:layout_editor_absoluteX="139dp"
-        tools:layout_editor_absoluteY="85dp" />
+        android:contentDescription="@string/openImage" />
 </androidx.constraintlayout.widget.ConstraintLayout>

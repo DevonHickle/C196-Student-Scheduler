@@ -6,4 +6,12 @@
     <string name="end_date">End Date</string>
     <string name="courses">Courses</string>
     <string name="todo">TODO</string>
+    <string name="enterButton">Tap To Enter</string>
+    <string name="openImage">TODO</string>
+    <string name="pending">TODO</string>
+    <string name="title">Title</string>
+    <string name="term_start">Term Start</string>
+    <string name="mm_dd_yyyy">MM/DD/YYYY</string>
+    <string name="term_end">Term End</string>
+    <string name="mm_dd_yyyy1">MM/DD/YYYY</string>
 </resources>

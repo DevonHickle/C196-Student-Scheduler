@@ -2,24 +2,28 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/enterButtonLand"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.MainActivity">
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/enterButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/tap_to_enter"
-        tools:layout_editor_absoluteX="294dp"
-        tools:layout_editor_absoluteY="297dp" />
+        android:layout_marginBottom="16dp"
+        android:text="@string/enterButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="126dp"
-        android:layout_height="136dp"
+        android:id="@+id/imageView"
+        android:layout_width="127dp"
+        android:layout_height="195dp"
+        app:layout_constraintBottom_toTopOf="@+id/enterButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:mipmap/sym_def_app_icon"
-        tools:layout_editor_absoluteX="302dp"
-        tools:layout_editor_absoluteY="137dp" />
+        android:contentDescription="@string/openImage" />
 </androidx.constraintlayout.widget.ConstraintLayout>
