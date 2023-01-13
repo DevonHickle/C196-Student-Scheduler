@@ -1,6 +1,7 @@
 package com.example.studentscheduler.SQLite;
 
 import android.app.Application;
+import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 
@@ -14,6 +15,7 @@ import com.example.studentscheduler.databaseAccess.NoteDAO;
 import com.example.studentscheduler.databaseAccess.TermDAO;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class Repo {
     private TermDAO termDAO;
@@ -105,7 +107,75 @@ public class Repo {
     }
 
     // ASYNC Tasks
-    public List<CourseEntity> getTermCourses(int termID) {
+    public List<CourseEntity> getTermCourses(int termID) throws ExecutionException, InterruptedException {
         return new GetAsyncTermCourses(courseDAO).execute(termID).get();
     }
+
+    private static class GetAsyncTermCourses extends AsyncTask<Integer, Void, List<CourseEntity>> {
+        private CourseDAO courseDAO;
+
+        private GetAsyncTermCourses(CourseDAO courseDAO) {
+            this.courseDAO = courseDAO;
+        }
+        @Override
+        protected List<CourseEntity> doInBackground(Integer... Integers) {
+            return courseDAO.getTermCourses(Integers[0]);
+        }
+    }
+
+    // Insert Async
+    private static class InsertAsyncTerm extends AsyncTask<TermEntity, Void, Void> {
+        private TermDAO termDAO;
+
+        private InsertAsyncTerm(TermDAO termDAO) {
+            this.termDAO = termDAO;
+        }
+
+        @Override
+        protected Void doInBackground(TermEntity... termEntities) {
+            termDAO.insert(termEntities[0]);
+            return null;
+        }
+    }
+    private static class InsertAsyncCourse extends AsyncTask<CourseEntity, Void, Void> {
+        private CourseDAO courseDAO;
+
+        private InsertAsyncCourse(CourseDAO courseDAO) {
+            this.courseDAO = courseDAO;
+        }
+
+        @Override
+        protected Void doInBackground(CourseEntity... courseEntities) {
+            courseDAO.insert(courseEntities[0]);
+            return null;
+        }
+    }
+    private static class InsertAsyncAssessment extends AsyncTask<AssessmentEntity, Void, Void> {
+        private AssessmentDAO assessmentDAO;
+
+        private InsertAsyncAssessment(AssessmentDAO assessmentDAO) {
+            this.assessmentDAO = assessmentDAO;
+        }
+
+        @Override
+        protected Void doInBackground(AssessmentEntity... assessmentEntities) {
+            assessmentDAO.insert(assessmentEntities[0]);
+            return null;
+        }
+    }
+    private static class InsertAsyncNote extends AsyncTask<NoteEntity, Void, Void> {
+        private NoteDAO noteDAO;
+
+        private InsertAsyncNote(NoteDAO noteDAO) {
+            this.noteDAO = noteDAO;
+        }
+
+        @Override
+        protected Void doInBackground(NoteEntity... noteEntities) {
+            noteDAO.insert(noteEntities[0]);
+            return null;
+        }
+    }
+
+    // Update Async
 }
