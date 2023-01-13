@@ -14,4 +14,7 @@
     <string name="mm_dd_yyyy">MM/DD/YYYY</string>
     <string name="term_end">Term End</string>
     <string name="mm_dd_yyyy1">MM/DD/YYYY</string>
+    <string name="termTitle">Title</string>
+    <string name="startdate">StartDate</string>
+    <string name="enddate">EndDate</string>
 </resources>

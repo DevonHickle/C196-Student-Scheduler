@@ -4,11 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.studentscheduler.Adapters.TermsAdapter;
 import com.example.studentscheduler.R;
+import com.example.studentscheduler.ViewModel.CourseVM;
 import com.example.studentscheduler.ViewModel.TermVM;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -34,5 +36,12 @@ public class TermListActivity extends AppCompatActivity {
 
         final TermsAdapter adapter = new TermsAdapter();
         recyclerView.setAdapter(adapter);
+
+        termVM = new ViewModelProvider(this).get(TermVM.class);
+        termVM.getAllTerms().observe(this, adapter::setTerms);
+
+        CourseVM courseVM = new ViewModelProvider(this).get(CourseVM.class);
+
+        //Add item touch helper, on swiped, and click listeners
     }
 }
