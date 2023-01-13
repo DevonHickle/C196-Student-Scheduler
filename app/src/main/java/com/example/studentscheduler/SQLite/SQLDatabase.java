@@ -28,10 +28,10 @@ import com.example.studentscheduler.databaseAccess.TermDAO;
 public abstract class SQLDatabase extends RoomDatabase {
     private static SQLDatabase instance;
 
-    public CourseDAO courseDAO;
-    public TermDAO termDAO;
-    public NoteDAO noteDAO;
-    public AssessmentDAO assessmentDAO;
+    public abstract CourseDAO courseDAO();
+    public abstract TermDAO termDAO();
+    public abstract NoteDAO noteDAO();
+    public abstract AssessmentDAO assessmentDAO();
 
     public static synchronized  SQLDatabase getInstance(Context context) {
         if (instance == null) {
@@ -59,10 +59,10 @@ public abstract class SQLDatabase extends RoomDatabase {
         private final AssessmentDAO assessmentDAO;
 
         public PopulateDataBaseAsyncTask(SQLDatabase sqlDatabase) {
-            termDAO = sqlDatabase.termDAO;
-            courseDAO = sqlDatabase.courseDAO;
-            noteDAO = sqlDatabase.noteDAO;
-            assessmentDAO = sqlDatabase.assessmentDAO;
+            termDAO = sqlDatabase.termDAO();
+            courseDAO = sqlDatabase.courseDAO();
+            noteDAO = sqlDatabase.noteDAO();
+            assessmentDAO = sqlDatabase.assessmentDAO();
         }
 
         @Override
