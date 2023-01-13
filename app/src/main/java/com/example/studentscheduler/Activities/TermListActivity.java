@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.studentscheduler.Adapters.TermsAdapter;
 import com.example.studentscheduler.R;
 import com.example.studentscheduler.ViewModel.TermVM;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -24,5 +27,12 @@ public class TermListActivity extends AppCompatActivity {
             Intent intent = new Intent(TermListActivity.this, AddEditTermActivity.class);
             startActivityForResult(intent, ADD_TERM_REQ);
         });
+
+        RecyclerView recyclerView = findViewById(R.id.termListView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setHasFixedSize(true);
+
+        final TermsAdapter adapter = new TermsAdapter();
+        recyclerView.setAdapter(adapter);
     }
 }

@@ -1,6 +1,7 @@
 package com.example.studentscheduler.databaseAccess;
 
 import androidx.lifecycle.LiveData;
+import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
@@ -12,6 +13,7 @@ import com.example.studentscheduler.Util.UtilDAO;
 
 import java.util.List;
 
+@Dao
 public interface AssessmentDAO extends UtilDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(AssessmentEntity assessmentEntity);
