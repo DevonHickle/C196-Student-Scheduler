@@ -123,7 +123,7 @@ public class Repo {
         }
     }
 
-    // Insert Async
+    // Insert Async Tasks
     private static class InsertAsyncTerm extends AsyncTask<TermEntity, Void, Void> {
         private TermDAO termDAO;
 
@@ -177,5 +177,117 @@ public class Repo {
         }
     }
 
-    // Update Async
+    // Update Async Tasks
+    private static class UpdateAsyncTerm extends AsyncTask<TermEntity, Void, Void> {
+        private TermDAO termDAO;
+
+        private UpdateAsyncTerm(TermDAO termDAO) {
+            this.termDAO = termDAO;
+        }
+
+        @Override
+        protected Void doInBackground(TermEntity... termEntities) {
+            termDAO.update(termEntities[0]);
+            return null;
+        }
+    }
+
+    private static class UpdateAsyncCourse extends AsyncTask<CourseEntity, Void, Void> {
+        private CourseDAO courseDAO;
+
+        private UpdateAsyncCourse(CourseDAO courseDAO) {
+            this.courseDAO = courseDAO;
+        }
+
+        @Override
+        protected Void doInBackground(CourseEntity... courseEntities) {
+            courseDAO.update(courseEntities[0]);
+            return null;
+        }
+    }
+
+    private static class UpdateAsyncAssessment extends AsyncTask<AssessmentEntity, Void, Void> {
+        private AssessmentDAO assessmentDAO;
+
+        private UpdateAsyncAssessment(AssessmentDAO assessmentDAO) {
+            this.assessmentDAO = assessmentDAO;
+        }
+
+        @Override
+        protected Void doInBackground(AssessmentEntity... assessmentEntities) {
+            assessmentDAO.update(assessmentEntities[0]);
+            return null;
+        }
+    }
+
+    private static class UpdateAsyncNote extends AsyncTask<NoteEntity, Void, Void> {
+        private NoteDAO noteDAO;
+
+        private UpdateAsyncNote(NoteDAO noteDAO) {
+            this.noteDAO = noteDAO;
+        }
+
+        @Override
+        protected Void doInBackground(NoteEntity... noteEntities) {
+            noteDAO.update(noteEntities[0]);
+            return null;
+        }
+    }
+
+    // Delete Async Tasks
+    private static class DeleteAsyncTerm extends AsyncTask<TermEntity, Void, Void> {
+        private TermDAO termDAO;
+
+        private DeleteAsyncTerm(TermDAO termDAO) {
+            this.termDAO = termDAO;
+        }
+
+        @Override
+        protected Void doInBackground(TermEntity... termEntities) {
+            termDAO.delete(termEntities[0]);
+            return null;
+        }
+    }
+
+    private static class DeleteAsyncCourse extends AsyncTask<CourseEntity, Void, Void> {
+        private CourseDAO courseDAO;
+
+        private DeleteAsyncCourse(CourseDAO courseDAO) {
+            this.courseDAO = courseDAO;
+        }
+
+        @Override
+        protected Void doInBackground(CourseEntity... courseEntities) {
+            courseDAO.delete(courseEntities[0]);
+            return null;
+        }
+    }
+
+    private static class DeleteAsyncAssessment extends AsyncTask<AssessmentEntity, Void, Void> {
+        private AssessmentDAO assessmentDAO;
+
+        private DeleteAsyncAssessment(AssessmentDAO assessmentDAO) {
+            this.assessmentDAO = assessmentDAO;
+        }
+
+        @Override
+        protected Void doInBackground(AssessmentEntity... assessmentEntities) {
+            assessmentDAO.delete(assessmentEntities[0]);
+            return null;
+        }
+    }
+
+    private static class DeleteAsyncNote extends AsyncTask<NoteEntity, Void, Void> {
+        private NoteDAO noteDAO;
+
+        private DeleteAsyncNote(NoteDAO noteDAO) {
+            this.noteDAO = noteDAO;
+        }
+
+        @Override
+        protected Void doInBackground(NoteEntity... noteEntities) {
+            noteDAO.delete(noteEntities[0]);
+            return null;
+        }
+    }
 }
