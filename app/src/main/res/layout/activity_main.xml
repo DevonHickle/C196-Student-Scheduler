@@ -22,10 +22,10 @@
         android:id="@+id/imageView"
         android:layout_width="127dp"
         android:layout_height="195dp"
+        android:contentDescription="@string/openImage"
         app:layout_constraintBottom_toTopOf="@+id/enterButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:mipmap/sym_def_app_icon"
-        android:contentDescription="@string/openImage" />
+        app:srcCompat="@mipmap/cap_round" />
 </androidx.constraintlayout.widget.ConstraintLayout>

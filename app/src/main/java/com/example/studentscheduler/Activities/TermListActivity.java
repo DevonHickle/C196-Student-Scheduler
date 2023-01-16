@@ -33,7 +33,7 @@ public class TermListActivity extends AppCompatActivity {
         setContentView(R.layout.term_list);
 
         FloatingActionButton buttonAddTerm = findViewById(R.id.btn_add_term);
-        buttonAddTerm.setOnClickListener(v -> {
+        buttonAddTerm.setOnClickListener(b -> {
             Intent intent = new Intent(TermListActivity.this, AddEditTermActivity.class);
             startActivityForResult(intent, ADD_TERM_REQ);
         });
