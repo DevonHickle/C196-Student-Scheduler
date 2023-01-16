@@ -18,4 +18,7 @@
     <string name="startdate">StartDate</string>
     <string name="enddate">EndDate</string>
     <string name="view_terms">View Terms</string>
+    <string name="tap_to_view_terms">Tap To View Terms</string>
+    <string name="welcome">Welcome!</string>
+    <string name="welcome_student">Welcome Student!</string>
 </resources>
