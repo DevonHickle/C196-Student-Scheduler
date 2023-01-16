@@ -12,8 +12,8 @@ import com.example.studentscheduler.SQLite.Repo;
 import java.util.List;
 
 public class TermVM extends AndroidViewModel {
-    private Repo repo;
-    private LiveData<List<TermEntity>> allTerms;
+    private final Repo repo;
+    private final LiveData<List<TermEntity>> allTerms;
 
     public TermVM(@NonNull Application application) {
         super(application);

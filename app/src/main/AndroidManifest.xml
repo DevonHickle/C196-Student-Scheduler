@@ -25,6 +25,10 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+        <activity
+            android:name=".Activities.TermListActivity"
+            android:label="Terms"
+            android:launchMode="singleTop"
+            android:parentActivityName=".Activities.MainActivity" />
     </application>
-
 </manifest>
