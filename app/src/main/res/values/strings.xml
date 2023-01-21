@@ -26,4 +26,6 @@
     <string name="todo1">TODO</string>
     <string name="note_test_content">Note test content.</string>
     <string name="noteTitle1">Title</string>
+    <string name="name">Name</string>
+    <string name="this_is_test_note_content">This is test note content</string>
 </resources>

@@ -2,7 +2,6 @@ package com.example.studentscheduler.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -44,7 +43,7 @@ public class NotesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         noteVM = new ViewModelProvider(this).get(NoteVM.class);
-        setContentView(R.layout.notes);
+        setContentView(R.layout.notes_list);
 
         textViewTitle = findViewById(R.id.detailed_note_title);
         textViewContent = findViewById(R.id.detailed_note_content);
