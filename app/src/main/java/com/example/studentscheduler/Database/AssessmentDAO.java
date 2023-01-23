@@ -1,4 +1,4 @@
-package com.example.studentscheduler.databaseAccess;
+package com.example.studentscheduler.Database;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
@@ -8,7 +8,7 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.studentscheduler.Entities.AssessmentEntity;
+import com.example.studentscheduler.Models.AssessmentModel;
 import com.example.studentscheduler.Util.UtilDAO;
 
 import java.util.List;
@@ -16,14 +16,14 @@ import java.util.List;
 @Dao
 public interface AssessmentDAO extends UtilDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insert(AssessmentEntity assessmentEntity);
+    void insert(AssessmentModel assessmentEntity);
 
     @Update
-    void update(AssessmentEntity assessmentEntity);
+    void update(AssessmentModel assessmentEntity);
 
     @Delete
-    void delete(AssessmentEntity assessmentEntity);
+    void delete(AssessmentModel assessmentEntity);
 
-    @Query("SELECT * FROM assessments WHERE courseID = :courseID ORDER BY id ASC")
-    LiveData<List<AssessmentEntity>> getCourseAssessments(int courseID);
+    @Query("SELECT * FROM AssessmentModel WHERE courseID = :courseID ORDER BY id ASC")
+    LiveData<List<AssessmentModel>> getCourseAssessments(int courseID);
 }

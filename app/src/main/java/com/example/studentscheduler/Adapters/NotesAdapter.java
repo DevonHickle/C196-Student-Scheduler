@@ -10,14 +10,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.studentscheduler.Entities.NoteEntity;
+import com.example.studentscheduler.Models.NoteModel;
 import com.example.studentscheduler.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteHolder> {
-    private List<NoteEntity> note = new ArrayList<>();
+    private List<NoteModel> note = new ArrayList<>();
     private AdapterView.OnItemClickListener listener;
 
     @NonNull
@@ -29,7 +29,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull NotesAdapter.NoteHolder holder, int position) {
-        NoteEntity currentNote = note.get(position);
+        NoteModel currentNote = note.get(position);
         holder.textViewNoteTitle.setText(currentNote.getName());
         holder.textViewNoteContent.setText(currentNote.getContent());
     }
@@ -40,12 +40,12 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteHolder> 
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    public void setNote(List<NoteEntity> note) {
+    public void setNote(List<NoteModel> note) {
         this.note = note;
         notifyDataSetChanged();
     }
 
-    public NoteEntity getNote(int position) {
+    public NoteModel getNote(int position) {
         return note.get(position);
     }
 

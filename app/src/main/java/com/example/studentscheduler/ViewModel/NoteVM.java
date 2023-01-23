@@ -6,8 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.example.studentscheduler.Entities.NoteEntity;
-import com.example.studentscheduler.SQLite.Repo;
+import com.example.studentscheduler.Models.NoteModel;
+import com.example.studentscheduler.Database.Repo;
 
 import java.util.List;
 
@@ -19,19 +19,19 @@ public class NoteVM extends AndroidViewModel {
         repo = new Repo(application);
     }
 
-    public void insert(NoteEntity noteEntity) {
+    public void insert(NoteModel noteEntity) {
         repo.insert(noteEntity);
     }
 
-    public void update(NoteEntity noteEntity) {
+    public void update(NoteModel noteEntity) {
         repo.update(noteEntity);
     }
 
-    public void delete(NoteEntity noteEntity) {
+    public void delete(NoteModel noteEntity) {
         repo.delete(noteEntity);
     }
 
-    public LiveData<List<NoteEntity>> getCourseNotes(int courseID) {
+    public LiveData<List<NoteModel>> getCourseNotes(int courseID) {
         return repo.getCourseNotes(courseID);
     }
 }

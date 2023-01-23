@@ -1,4 +1,4 @@
-package com.example.studentscheduler.Entities;
+package com.example.studentscheduler.Models;
 
 import static androidx.room.ForeignKey.CASCADE;
 
@@ -9,12 +9,12 @@ import androidx.room.PrimaryKey;
 import com.example.studentscheduler.Util.UtilEntity;
 
 @Entity(tableName = "courses",
-    foreignKeys = @ForeignKey(entity = TermEntity.class,
+    foreignKeys = @ForeignKey(entity = TermModel.class,
             parentColumns = "id",
             childColumns = "termID",
             onDelete = CASCADE
     ))
-public class CourseEntity extends UtilEntity {
+public class CourseModel extends UtilEntity {
     @PrimaryKey(autoGenerate = true)
 
     private int id;
@@ -28,7 +28,7 @@ public class CourseEntity extends UtilEntity {
     private String instructorPhone;
     private String instructorEmail;
 
-    public CourseEntity(int termID, String title, String startDate, String endDate, boolean alert, int status, String instructorName, String instructorPhone, String instructorEmail) {
+    public CourseModel(int termID, String title, String startDate, String endDate, boolean alert, int status, String instructorName, String instructorPhone, String instructorEmail) {
         this.termID = termID;
         this.title = title;
         this.startDate = startDate;

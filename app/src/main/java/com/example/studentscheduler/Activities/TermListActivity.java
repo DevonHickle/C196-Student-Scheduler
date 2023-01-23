@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.studentscheduler.Adapters.TermsAdapter;
-import com.example.studentscheduler.Entities.TermEntity;
+import com.example.studentscheduler.Models.TermModel;
 import com.example.studentscheduler.R;
 import com.example.studentscheduler.ViewModel.CourseVM;
 import com.example.studentscheduler.ViewModel.TermVM;
@@ -57,7 +57,7 @@ public class TermListActivity extends AppCompatActivity {
 
             @SuppressLint("NotifyDataSetChanged")
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                TermEntity deletedTerm = adapter.getTermAt(viewHolder.getAdapterPosition());
+                TermModel deletedTerm = adapter.getTermAt(viewHolder.getAdapterPosition());
 
                 int relatedCourse = 0;
                 try {
@@ -94,7 +94,7 @@ public class TermListActivity extends AppCompatActivity {
             String startDate = data.getStringExtra(AddEditTermActivity.EXTRA_TERM_START_DATE);
             String endDate = data.getStringExtra(AddEditTermActivity.EXTRA_TERM_END_DATE);
 
-            TermEntity termEntity = new TermEntity(title, startDate, endDate);
+            TermModel termEntity = new TermModel(title, startDate, endDate);
             termVM.insert(termEntity);
 
             Toast.makeText(this, "Term added!", Toast.LENGTH_SHORT).show();

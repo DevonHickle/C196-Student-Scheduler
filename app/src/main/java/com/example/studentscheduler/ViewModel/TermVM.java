@@ -6,14 +6,14 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.example.studentscheduler.Entities.TermEntity;
-import com.example.studentscheduler.SQLite.Repo;
+import com.example.studentscheduler.Models.TermModel;
+import com.example.studentscheduler.Database.Repo;
 
 import java.util.List;
 
 public class TermVM extends AndroidViewModel {
     private final Repo repo;
-    private final LiveData<List<TermEntity>> allTerms;
+    private final LiveData<List<TermModel>> allTerms;
 
     public TermVM(@NonNull Application application) {
         super(application);
@@ -21,19 +21,19 @@ public class TermVM extends AndroidViewModel {
         allTerms = repo.getAllTerms();
     }
 
-    public void insert(TermEntity termEntity) {
+    public void insert(TermModel termEntity) {
         repo.insert(termEntity);
     }
 
-    public void update(TermEntity termEntity) {
+    public void update(TermModel termEntity) {
         repo.update(termEntity);
     }
 
-    public void delete(TermEntity termEntity) {
+    public void delete(TermModel termEntity) {
         repo.delete(termEntity);
     }
 
-    public LiveData<List<TermEntity>> getAllTerms() {
+    public LiveData<List<TermModel>> getAllTerms() {
         return allTerms;
     }
 }

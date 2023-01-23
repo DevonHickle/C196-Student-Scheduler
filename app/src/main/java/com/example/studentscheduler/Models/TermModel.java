@@ -1,4 +1,4 @@
-package com.example.studentscheduler.Entities;
+package com.example.studentscheduler.Models;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey;
 import com.example.studentscheduler.Util.UtilEntity;
 
 @Entity(tableName = "terms")
-public class TermEntity extends UtilEntity {
+public class TermModel extends UtilEntity {
     @PrimaryKey(autoGenerate = true)
 
     private int id;
@@ -14,7 +14,7 @@ public class TermEntity extends UtilEntity {
     private String startDate;
     private String endDate;
 
-    public TermEntity(String title, String startDate, String endDate) {
+    public TermModel(String title, String startDate, String endDate) {
         this.title = title;
         this.startDate = startDate;
         this.endDate = endDate;

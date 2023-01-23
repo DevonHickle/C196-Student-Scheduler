@@ -6,8 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.example.studentscheduler.Entities.AssessmentEntity;
-import com.example.studentscheduler.SQLite.Repo;
+import com.example.studentscheduler.Models.AssessmentModel;
+import com.example.studentscheduler.Database.Repo;
 
 import java.util.List;
 
@@ -19,19 +19,19 @@ public class AssessmentVM extends AndroidViewModel {
         Repo repo = new Repo(application);
     }
 
-    public void insert(AssessmentEntity AE) {
+    public void insert(AssessmentModel AE) {
         repo.insert(AE);
     }
 
-    public void update(AssessmentEntity AE) {
+    public void update(AssessmentModel AE) {
         repo.update(AE);
     }
 
-    public void delete(AssessmentEntity AE) {
+    public void delete(AssessmentModel AE) {
         repo.delete(AE);
     }
 
-    public LiveData<List<AssessmentEntity>> getCourseAssignments(int courseID) {
+    public LiveData<List<AssessmentModel>> getCourseAssignments(int courseID) {
         return repo.getCourseAssignments(courseID);
     }
 }

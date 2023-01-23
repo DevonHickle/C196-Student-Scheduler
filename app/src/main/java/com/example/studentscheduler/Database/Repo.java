@@ -1,34 +1,30 @@
-package com.example.studentscheduler.SQLite;
+package com.example.studentscheduler.Database;
 
 import android.app.Application;
 import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 
-import com.example.studentscheduler.Entities.AssessmentEntity;
-import com.example.studentscheduler.Entities.CourseEntity;
-import com.example.studentscheduler.Entities.NoteEntity;
-import com.example.studentscheduler.Entities.TermEntity;
-import com.example.studentscheduler.databaseAccess.AssessmentDAO;
-import com.example.studentscheduler.databaseAccess.CourseDAO;
-import com.example.studentscheduler.databaseAccess.NoteDAO;
-import com.example.studentscheduler.databaseAccess.TermDAO;
+import com.example.studentscheduler.Models.AssessmentModel;
+import com.example.studentscheduler.Models.CourseModel;
+import com.example.studentscheduler.Models.NoteModel;
+import com.example.studentscheduler.Models.TermModel;
 
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class Repo {
     private TermDAO termDAO;
-    private LiveData<List<TermEntity>> listAllTerms;
+    private LiveData<List<TermModel>> listAllTerms;
 
     private CourseDAO courseDAO;
-    private LiveData<List<CourseEntity>> listTermCourses;
+    private LiveData<List<CourseModel>> listTermCourses;
 
     private AssessmentDAO assessmentDAO;
-    private LiveData<List<AssessmentEntity>> listAssessments;
+    private LiveData<List<AssessmentModel>> listAssessments;
 
     private NoteDAO noteDAO;
-    private LiveData<List<NoteEntity>> listAllNotes;
+    private LiveData<List<NoteModel>> listAllNotes;
 
     public Repo(Application application) {
         SQLDatabase database = SQLDatabase.getInstance(application);
@@ -39,92 +35,92 @@ public class Repo {
     }
 
     // Insert
-    public void insert(AssessmentEntity ae) {
+    public void insert(AssessmentModel ae) {
         new InsertAsyncAssessment(assessmentDAO).execute(ae);
     }
 
-    public void insert(TermEntity te) {
+    public void insert(TermModel te) {
         new InsertAsyncTerm(termDAO).execute(te);
     }
 
-    public void insert(NoteEntity ne) {
+    public void insert(NoteModel ne) {
         new InsertAsyncNote(noteDAO).execute(ne);
     }
 
-    public void insert(CourseEntity courseEntity) {
+    public void insert(CourseModel courseEntity) {
         new InsertAsyncCourse(courseDAO).execute(courseEntity);
     }
 
     // Update
-    public void update(AssessmentEntity ae) {
+    public void update(AssessmentModel ae) {
         new UpdateAsyncAssessment(assessmentDAO).execute(ae);
     }
 
-    public void update(TermEntity te) {
+    public void update(TermModel te) {
         new UpdateAsyncTerm(termDAO).execute(te);
     }
 
-    public void update(NoteEntity ne) {
+    public void update(NoteModel ne) {
         new UpdateAsyncNote(noteDAO).execute(ne);
     }
 
-    public void update(CourseEntity courseEntity) {
+    public void update(CourseModel courseEntity) {
         new UpdateAsyncCourse(courseDAO).execute(courseEntity);
     }
 
     // Delete
-    public void delete(AssessmentEntity ae) {
+    public void delete(AssessmentModel ae) {
         new DeleteAsyncAssessment(assessmentDAO).execute(ae);
     }
 
-    public void delete(TermEntity te) {
+    public void delete(TermModel te) {
         new DeleteAsyncTerm(termDAO).execute(te);
     }
 
-    public void delete(NoteEntity ne) {
+    public void delete(NoteModel ne) {
         new DeleteAsyncNote(noteDAO).execute(ne);
     }
 
-    public void delete(CourseEntity courseEntity) {
+    public void delete(CourseModel courseEntity) {
         new DeleteAsyncCourse(courseDAO).execute(courseEntity);
     }
 
     //LiveData List
-    public LiveData<List<AssessmentEntity>> getCourseAssignments(int courseID) {
+    public LiveData<List<AssessmentModel>> getCourseAssignments(int courseID) {
         return assessmentDAO.getCourseAssessments(courseID);
     }
 
-    public LiveData<List<TermEntity>> getAllTerms() {
+    public LiveData<List<TermModel>> getAllTerms() {
         return listAllTerms;
     }
 
-    public LiveData<List<NoteEntity>> getCourseNotes(int courseID) {
+    public LiveData<List<NoteModel>> getCourseNotes(int courseID) {
         return noteDAO.getCourseNotes(courseID);
     }
 
-    public LiveData<List<CourseEntity>> getLiveTermCourses(int termID) {
+    public LiveData<List<CourseModel>> getLiveTermCourses(int termID) {
         return courseDAO.getActiveTermCourses(termID);
     }
 
     // ASYNC Tasks
-    public List<CourseEntity> getTermCourses(int termID) throws ExecutionException, InterruptedException {
+    public List<CourseModel> getTermCourses(int termID) throws ExecutionException, InterruptedException {
         return new GetAsyncTermCourses(courseDAO).execute(termID).get();
     }
 
-    private static class GetAsyncTermCourses extends AsyncTask<Integer, Void, List<CourseEntity>> {
+    private static class GetAsyncTermCourses extends AsyncTask<Integer, Void, List<CourseModel>> {
         private CourseDAO courseDAO;
 
         private GetAsyncTermCourses(CourseDAO courseDAO) {
             this.courseDAO = courseDAO;
         }
         @Override
-        protected List<CourseEntity> doInBackground(Integer... Integers) {
+        protected List<CourseModel> doInBackground(Integer... Integers) {
             return courseDAO.getTermCourses(Integers[0]);
         }
     }
 
     // Insert Async Tasks
-    private static class InsertAsyncTerm extends AsyncTask<TermEntity, Void, Void> {
+    private static class InsertAsyncTerm extends AsyncTask<TermModel, Void, Void> {
         private TermDAO termDAO;
 
         private InsertAsyncTerm(TermDAO termDAO) {
@@ -132,12 +128,12 @@ public class Repo {
         }
 
         @Override
-        protected Void doInBackground(TermEntity... termEntities) {
+        protected Void doInBackground(TermModel... termEntities) {
             termDAO.insert(termEntities[0]);
             return null;
         }
     }
-    private static class InsertAsyncCourse extends AsyncTask<CourseEntity, Void, Void> {
+    private static class InsertAsyncCourse extends AsyncTask<CourseModel, Void, Void> {
         private CourseDAO courseDAO;
 
         private InsertAsyncCourse(CourseDAO courseDAO) {
@@ -145,12 +141,12 @@ public class Repo {
         }
 
         @Override
-        protected Void doInBackground(CourseEntity... courseEntities) {
+        protected Void doInBackground(CourseModel... courseEntities) {
             courseDAO.insert(courseEntities[0]);
             return null;
         }
     }
-    private static class InsertAsyncAssessment extends AsyncTask<AssessmentEntity, Void, Void> {
+    private static class InsertAsyncAssessment extends AsyncTask<AssessmentModel, Void, Void> {
         private AssessmentDAO assessmentDAO;
 
         private InsertAsyncAssessment(AssessmentDAO assessmentDAO) {
@@ -158,12 +154,12 @@ public class Repo {
         }
 
         @Override
-        protected Void doInBackground(AssessmentEntity... assessmentEntities) {
+        protected Void doInBackground(AssessmentModel... assessmentEntities) {
             assessmentDAO.insert(assessmentEntities[0]);
             return null;
         }
     }
-    private static class InsertAsyncNote extends AsyncTask<NoteEntity, Void, Void> {
+    private static class InsertAsyncNote extends AsyncTask<NoteModel, Void, Void> {
         private NoteDAO noteDAO;
 
         private InsertAsyncNote(NoteDAO noteDAO) {
@@ -171,14 +167,14 @@ public class Repo {
         }
 
         @Override
-        protected Void doInBackground(NoteEntity... noteEntities) {
+        protected Void doInBackground(NoteModel... noteEntities) {
             noteDAO.insert(noteEntities[0]);
             return null;
         }
     }
 
     // Update Async Tasks
-    private static class UpdateAsyncTerm extends AsyncTask<TermEntity, Void, Void> {
+    private static class UpdateAsyncTerm extends AsyncTask<TermModel, Void, Void> {
         private TermDAO termDAO;
 
         private UpdateAsyncTerm(TermDAO termDAO) {
@@ -186,13 +182,13 @@ public class Repo {
         }
 
         @Override
-        protected Void doInBackground(TermEntity... termEntities) {
+        protected Void doInBackground(TermModel... termEntities) {
             termDAO.update(termEntities[0]);
             return null;
         }
     }
 
-    private static class UpdateAsyncCourse extends AsyncTask<CourseEntity, Void, Void> {
+    private static class UpdateAsyncCourse extends AsyncTask<CourseModel, Void, Void> {
         private CourseDAO courseDAO;
 
         private UpdateAsyncCourse(CourseDAO courseDAO) {
@@ -200,13 +196,13 @@ public class Repo {
         }
 
         @Override
-        protected Void doInBackground(CourseEntity... courseEntities) {
+        protected Void doInBackground(CourseModel... courseEntities) {
             courseDAO.update(courseEntities[0]);
             return null;
         }
     }
 
-    private static class UpdateAsyncAssessment extends AsyncTask<AssessmentEntity, Void, Void> {
+    private static class UpdateAsyncAssessment extends AsyncTask<AssessmentModel, Void, Void> {
         private AssessmentDAO assessmentDAO;
 
         private UpdateAsyncAssessment(AssessmentDAO assessmentDAO) {
@@ -214,13 +210,13 @@ public class Repo {
         }
 
         @Override
-        protected Void doInBackground(AssessmentEntity... assessmentEntities) {
+        protected Void doInBackground(AssessmentModel... assessmentEntities) {
             assessmentDAO.update(assessmentEntities[0]);
             return null;
         }
     }
 
-    private static class UpdateAsyncNote extends AsyncTask<NoteEntity, Void, Void> {
+    private static class UpdateAsyncNote extends AsyncTask<NoteModel, Void, Void> {
         private NoteDAO noteDAO;
 
         private UpdateAsyncNote(NoteDAO noteDAO) {
@@ -228,14 +224,14 @@ public class Repo {
         }
 
         @Override
-        protected Void doInBackground(NoteEntity... noteEntities) {
+        protected Void doInBackground(NoteModel... noteEntities) {
             noteDAO.update(noteEntities[0]);
             return null;
         }
     }
 
     // Delete Async Tasks
-    private static class DeleteAsyncTerm extends AsyncTask<TermEntity, Void, Void> {
+    private static class DeleteAsyncTerm extends AsyncTask<TermModel, Void, Void> {
         private TermDAO termDAO;
 
         private DeleteAsyncTerm(TermDAO termDAO) {
@@ -243,13 +239,13 @@ public class Repo {
         }
 
         @Override
-        protected Void doInBackground(TermEntity... termEntities) {
+        protected Void doInBackground(TermModel... termEntities) {
             termDAO.delete(termEntities[0]);
             return null;
         }
     }
 
-    private static class DeleteAsyncCourse extends AsyncTask<CourseEntity, Void, Void> {
+    private static class DeleteAsyncCourse extends AsyncTask<CourseModel, Void, Void> {
         private CourseDAO courseDAO;
 
         private DeleteAsyncCourse(CourseDAO courseDAO) {
@@ -257,13 +253,13 @@ public class Repo {
         }
 
         @Override
-        protected Void doInBackground(CourseEntity... courseEntities) {
+        protected Void doInBackground(CourseModel... courseEntities) {
             courseDAO.delete(courseEntities[0]);
             return null;
         }
     }
 
-    private static class DeleteAsyncAssessment extends AsyncTask<AssessmentEntity, Void, Void> {
+    private static class DeleteAsyncAssessment extends AsyncTask<AssessmentModel, Void, Void> {
         private AssessmentDAO assessmentDAO;
 
         private DeleteAsyncAssessment(AssessmentDAO assessmentDAO) {
@@ -271,13 +267,13 @@ public class Repo {
         }
 
         @Override
-        protected Void doInBackground(AssessmentEntity... assessmentEntities) {
+        protected Void doInBackground(AssessmentModel... assessmentEntities) {
             assessmentDAO.delete(assessmentEntities[0]);
             return null;
         }
     }
 
-    private static class DeleteAsyncNote extends AsyncTask<NoteEntity, Void, Void> {
+    private static class DeleteAsyncNote extends AsyncTask<NoteModel, Void, Void> {
         private NoteDAO noteDAO;
 
         private DeleteAsyncNote(NoteDAO noteDAO) {
@@ -285,7 +281,7 @@ public class Repo {
         }
 
         @Override
-        protected Void doInBackground(NoteEntity... noteEntities) {
+        protected Void doInBackground(NoteModel... noteEntities) {
             noteDAO.delete(noteEntities[0]);
             return null;
         }

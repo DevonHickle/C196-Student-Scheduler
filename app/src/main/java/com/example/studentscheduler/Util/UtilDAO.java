@@ -5,40 +5,40 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Update;
 
-import com.example.studentscheduler.Entities.AssessmentEntity;
-import com.example.studentscheduler.Entities.CourseEntity;
-import com.example.studentscheduler.Entities.NoteEntity;
-import com.example.studentscheduler.Entities.TermEntity;
+import com.example.studentscheduler.Models.AssessmentModel;
+import com.example.studentscheduler.Models.CourseModel;
+import com.example.studentscheduler.Models.NoteModel;
+import com.example.studentscheduler.Models.TermModel;
 
 public interface UtilDAO {
     // Insert
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insert(TermEntity entity);
+    void insert(TermModel entity);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insert(CourseEntity entity);
+    void insert(CourseModel entity);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insert(NoteEntity entity);
+    void insert(NoteModel entity);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insert(AssessmentEntity entity);
+    void insert(AssessmentModel entity);
 
     // Update
-    @Update void update(TermEntity entity);
+    @Update void update(TermModel entity);
 
-    @Update void update(CourseEntity entity);
+    @Update void update(CourseModel entity);
 
-    @Update void update(NoteEntity entity);
+    @Update void update(NoteModel entity);
 
-    @Update void update(AssessmentEntity entity);
+    @Update void update(AssessmentModel entity);
 
     // Delete
-    @Delete void delete(TermEntity entity);
+    @Delete void delete(TermModel entity);
 
-    @Delete void delete(CourseEntity entity);
+    @Delete void delete(CourseModel entity);
 
-    @Delete void delete(NoteEntity entity);
+    @Delete void delete(NoteModel entity);
 
-    @Delete void delete(AssessmentEntity entity);
+    @Delete void delete(AssessmentModel entity);
 }

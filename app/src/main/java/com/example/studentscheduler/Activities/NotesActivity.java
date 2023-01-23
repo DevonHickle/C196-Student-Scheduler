@@ -13,7 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.studentscheduler.Entities.NoteEntity;
+import com.example.studentscheduler.Models.NoteModel;
 import com.example.studentscheduler.R;
 import com.example.studentscheduler.ViewModel.NoteVM;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -87,7 +87,7 @@ public class NotesActivity extends AppCompatActivity {
             textViewTitle.setText(noteName);
             textViewContent.setText(noteContent);
 
-            NoteEntity noteEntity = new NoteEntity(courseID,
+            NoteModel noteEntity = new NoteModel(courseID,
                     noteName, noteContent);
 
             noteEntity.setId(noteID);

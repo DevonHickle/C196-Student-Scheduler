@@ -1,4 +1,4 @@
-package com.example.studentscheduler.SQLite;
+package com.example.studentscheduler.Database;
 import android.content.Context;
 import android.os.AsyncTask;
 
@@ -9,20 +9,16 @@ import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.studentscheduler.Activities.CourseDetailActivity;
-import com.example.studentscheduler.Entities.AssessmentEntity;
-import com.example.studentscheduler.Entities.CourseEntity;
-import com.example.studentscheduler.Entities.NoteEntity;
-import com.example.studentscheduler.Entities.TermEntity;
-import com.example.studentscheduler.databaseAccess.AssessmentDAO;
-import com.example.studentscheduler.databaseAccess.CourseDAO;
-import com.example.studentscheduler.databaseAccess.NoteDAO;
-import com.example.studentscheduler.databaseAccess.TermDAO;
+import com.example.studentscheduler.Models.AssessmentModel;
+import com.example.studentscheduler.Models.CourseModel;
+import com.example.studentscheduler.Models.NoteModel;
+import com.example.studentscheduler.Models.TermModel;
 
 @Database(version = 1, entities = {
-        TermEntity.class,
-        CourseEntity.class,
-        NoteEntity.class,
-        AssessmentEntity.class
+        TermModel.class,
+        CourseModel.class,
+        NoteModel.class,
+        AssessmentModel.class
 })
 
 public abstract class SQLDatabase extends RoomDatabase {
@@ -67,19 +63,19 @@ public abstract class SQLDatabase extends RoomDatabase {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            termDAO.insert(new TermEntity("Term 1", "07/01/2020", "12/30/2020"));
-            termDAO.insert(new TermEntity("Term 2", "01/01/2021", "06/30/2021"));
+            termDAO.insert(new TermModel("Term 1", "07/01/2020", "12/30/2020"));
+            termDAO.insert(new TermModel("Term 2", "01/01/2021", "06/30/2021"));
 
-            courseDAO.insert(new CourseEntity(1, "Course 1", "07/01/2020", "12/30/2020",
+            courseDAO.insert(new CourseModel(1, "Course 1", "07/01/2020", "12/30/2020",
                         true, CourseDetailActivity.STATUS_IN_PROGRESS, "Devon", "123-456-7890", "devon@test.com"));
-            courseDAO.insert(new CourseEntity(2, "Course 2", "07/01/2020", "12/30/2020",
+            courseDAO.insert(new CourseModel(2, "Course 2", "07/01/2020", "12/30/2020",
                         false, CourseDetailActivity.STATUS_COMPLETED, "Devon", "123-456-7890", "devon@test.com"));
 
-            assessmentDAO.insert(new AssessmentEntity(1, "test 1", 0, "01/25/2020", true));
-            assessmentDAO.insert(new AssessmentEntity(2, "Test 2", 0, "02/12/2020", true));
+            assessmentDAO.insert(new AssessmentModel(1, "test 1", 0, "01/25/2020", true));
+            assessmentDAO.insert(new AssessmentModel(2, "Test 2", 0, "02/12/2020", true));
 
-            noteDAO.insert(new NoteEntity(1, "Notes for course 1", "Test content"));
-            noteDAO.insert(new NoteEntity(2, "Notes for Course 2", "Test contents"));
+            noteDAO.insert(new NoteModel(1, "Notes for course 1", "Test content"));
+            noteDAO.insert(new NoteModel(2, "Notes for Course 2", "Test contents"));
             return null;
         }
     }
