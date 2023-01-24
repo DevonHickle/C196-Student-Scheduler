@@ -19,8 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button enterButton = findViewById(R.id.enterButton);
     enterButton.setOnClickListener(view -> {
-        Intent intent = new Intent(this, TermListActivity.class);
-        startActivity(intent);
+        setContentView(R.layout.term_list);
         });
     }
 
