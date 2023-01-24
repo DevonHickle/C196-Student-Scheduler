@@ -18,7 +18,7 @@ import com.example.studentscheduler.R;
 import com.example.studentscheduler.ViewModel.NoteVM;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class NotesActivity extends AppCompatActivity {
+public class CourseNotesActivity extends AppCompatActivity {
     public static final String EXTRA_NOTE_COURSE_ID =
             "com.example.studentscheduler.Activities.NOTE_COURSE_ID";
     public static final String EXTRA_NOTE_COURSE_TITLE =
@@ -61,11 +61,11 @@ public class NotesActivity extends AppCompatActivity {
 
         FloatingActionButton buttonEditNote = findViewById(R.id.btn_edit_note);
         buttonEditNote.setOnClickListener(v -> {
-            Intent editNoteIntent = new Intent(NotesActivity.this, AddEditNotesActivity.class);
-            editNoteIntent.putExtra(AddEditNotesActivity.EXTRA_NOTE_ID, noteID);
-            editNoteIntent.putExtra(AddEditNotesActivity.EXTRA_COURSE_ID, courseID);
-            editNoteIntent.putExtra(AddEditNotesActivity.EXTRA_COURSE_NOTE_TITLE, noteTitle);
-            editNoteIntent.putExtra(AddEditNotesActivity.EXTRA_COURSE_NOTE_CONTENT, textViewContent.getText().toString());
+            Intent editNoteIntent = new Intent(CourseNotesActivity.this, AddEditCourseNotesActivity.class);
+            editNoteIntent.putExtra(AddEditCourseNotesActivity.EXTRA_NOTE_ID, noteID);
+            editNoteIntent.putExtra(AddEditCourseNotesActivity.EXTRA_COURSE_ID, courseID);
+            editNoteIntent.putExtra(AddEditCourseNotesActivity.EXTRA_COURSE_NOTE_TITLE, noteTitle);
+            editNoteIntent.putExtra(AddEditCourseNotesActivity.EXTRA_COURSE_NOTE_CONTENT, textViewContent.getText().toString());
             startActivity(editNoteIntent);
         });
     }
@@ -75,9 +75,9 @@ public class NotesActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == EDIT_NOTE_REQUEST && resultCode == RESULT_OK) {
             assert data != null;
-            int noteID = data.getIntExtra(AddEditNotesActivity.EXTRA_NOTE_ID, -1);
-            String noteName = data.getStringExtra(AddEditNotesActivity.EXTRA_COURSE_NOTE_TITLE);
-            String noteContent = data.getStringExtra(AddEditNotesActivity.EXTRA_COURSE_NOTE_CONTENT);
+            int noteID = data.getIntExtra(AddEditCourseNotesActivity.EXTRA_NOTE_ID, -1);
+            String noteName = data.getStringExtra(AddEditCourseNotesActivity.EXTRA_COURSE_NOTE_TITLE);
+            String noteContent = data.getStringExtra(AddEditCourseNotesActivity.EXTRA_COURSE_NOTE_CONTENT);
 
             if(noteID == -1) {
                 Toast.makeText(this, "Error, note not saved", Toast.LENGTH_SHORT).show();

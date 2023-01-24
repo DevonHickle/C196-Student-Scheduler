@@ -11,7 +11,7 @@ import com.example.studentscheduler.R;
 
 import java.util.Objects;
 
-public class AddEditNotesActivity extends AppCompatActivity {
+public class AddEditCourseNotesActivity extends AppCompatActivity {
     public static final String EXTRA_NOTE_ID = "com.example.studentscheduler.Activities.COURSE_NOTE_ID";
     public static final String EXTRA_COURSE_ID = "com.example.studentscheduler.Activities.EXTRA_COURSE_ID";
     public static final String EXTRA_COURSE_NOTE_TITLE = "com.example.studentscheduler.Activities.COURSE_NOTE_TITLE";

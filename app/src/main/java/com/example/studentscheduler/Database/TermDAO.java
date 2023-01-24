@@ -25,6 +25,6 @@ public interface TermDAO extends UtilDAO {
     void delete(TermModel termEntity);
 
     // Query terms and order by ascending ID
-    @Query("SELECT * FROM TermModel ORDER BY id ASC")
+    @Query("SELECT * FROM terms ORDER BY id ASC")
     LiveData<List<TermModel>> getAllTerms();
 }

@@ -24,6 +24,6 @@ public interface AssessmentDAO extends UtilDAO {
     @Delete
     void delete(AssessmentModel assessmentEntity);
 
-    @Query("SELECT * FROM AssessmentModel WHERE courseID = :courseID ORDER BY id ASC")
+    @Query("SELECT * FROM assessments WHERE courseID = :courseID ORDER BY id ASC")
     LiveData<List<AssessmentModel>> getCourseAssessments(int courseID);
 }

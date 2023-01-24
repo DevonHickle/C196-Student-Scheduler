@@ -23,9 +23,9 @@ public interface CourseDAO extends UtilDAO {
 
     @Delete void delete(CourseModel courseEntity);
 
-    @Query("SELECT * FROM CourseModel WHERE termID = :termID ORDER BY id ASC")
+    @Query("SELECT * FROM courses WHERE termID = :termID ORDER BY id ASC")
     LiveData<List<CourseModel>> getActiveTermCourses(int termID);
 
-    @Query("SELECT * FROM CourseModel WHERE termID = :termID ORDER BY id ASC")
+    @Query("SELECT * FROM courses WHERE termID = :termID ORDER BY id ASC")
     List<CourseModel> getTermCourses(int termID);
 }

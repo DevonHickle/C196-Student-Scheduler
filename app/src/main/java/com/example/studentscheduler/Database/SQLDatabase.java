@@ -54,6 +54,7 @@ public abstract class SQLDatabase extends RoomDatabase {
         private final NoteDAO noteDAO;
         private final AssessmentDAO assessmentDAO;
 
+        @SuppressWarnings("deprecation")
         public PopulateDataBaseAsyncTask(SQLDatabase sqlDatabase) {
             termDAO = sqlDatabase.termDAO();
             courseDAO = sqlDatabase.courseDAO();
