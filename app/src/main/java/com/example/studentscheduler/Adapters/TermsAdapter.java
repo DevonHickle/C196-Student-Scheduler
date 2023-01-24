@@ -70,9 +70,7 @@ public class TermsAdapter extends RecyclerView.Adapter<TermsAdapter.TermHolder> 
         }
     }
 
-    public interface OnItemClickListener {
-        void onItemClick(TermModel termEntity);
-    }
+    public interface OnItemClickListener { void onItemClick(TermModel termEntity);}
 
     public void setOnItemClickListener(OnItemClickListener listener) {
         this.listener = listener;
