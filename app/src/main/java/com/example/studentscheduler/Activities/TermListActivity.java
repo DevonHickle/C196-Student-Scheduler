@@ -35,18 +35,19 @@ public class TermListActivity extends AppCompatActivity {
         FloatingActionButton buttonAddTerm = findViewById(R.id.btn_add_term);
         buttonAddTerm.setOnClickListener(b -> {
             Intent intent = new Intent(TermListActivity.this, AddEditTermActivity.class);
-            startActivity(intent);
+            //noinspection deprecation
+            startActivityForResult(intent, ADD_TERM_REQ);
         });
 
         RecyclerView recyclerView = findViewById(R.id.termListView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
 
-        final TermsAdapter adapter = new TermsAdapter();
-        recyclerView.setAdapter(adapter);
+        final TermsAdapter termsAdapter = new TermsAdapter();
+        recyclerView.setAdapter(termsAdapter);
 
         termVM = new ViewModelProvider(this).get(TermVM.class);
-        termVM.getAllTerms().observe(this, adapter::setTerms);
+        termVM.getAllTerms().observe(this, termsAdapter::setTerms);
 
         CourseVM courseVM = new ViewModelProvider(this).get(CourseVM.class);
 
@@ -57,7 +58,7 @@ public class TermListActivity extends AppCompatActivity {
 
             @SuppressLint("NotifyDataSetChanged")
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                TermModel deletedTerm = adapter.getTermAt(viewHolder.getAdapterPosition());
+                TermModel deletedTerm = termsAdapter.getTermAt(viewHolder.getAdapterPosition());
 
                 int relatedCourse = 0;
                 try {
@@ -68,7 +69,7 @@ public class TermListActivity extends AppCompatActivity {
 
                 if(relatedCourse > 0) {
                     Toast.makeText(TermListActivity.this, "Courses are still attached to this term, cannot delete term", Toast.LENGTH_SHORT).show();
-                    adapter.notifyDataSetChanged();
+                    termsAdapter.notifyDataSetChanged();
                 } else {
                     termVM.delete(deletedTerm);
                     Toast.makeText(TermListActivity.this, "Term successfully deleted", Toast.LENGTH_SHORT).show();
@@ -77,7 +78,7 @@ public class TermListActivity extends AppCompatActivity {
         });
         itemTouchHelper.attachToRecyclerView(recyclerView);
 
-        adapter.setOnItemClickListener(termEntity -> {
+        termsAdapter.setOnItemClickListener(termEntity -> {
             Intent intent = new Intent(TermListActivity.this, TermDetailActivity.class);
             intent.putExtra(TermDetailActivity.EXTRA_ID, termEntity.getId());
             intent.putExtra(TermDetailActivity.EXTRA_TITLE, termEntity.getTitle());

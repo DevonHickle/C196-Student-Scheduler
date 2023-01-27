@@ -28,7 +28,9 @@
         <activity
             android:name=".Activities.TermListActivity"
             android:label="Terms"
-            android:launchMode="singleTop"
             android:parentActivityName=".Activities.MainActivity" />
+        <activity
+            android:name=".Activities.AddEditTermActivity"
+            android:launchMode="singleTop" />
     </application>
 </manifest>
