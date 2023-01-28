@@ -4,4 +4,5 @@
     <item name="text_view_term_start_date" type="id" />
     <item name="text_view_term_end_date" type="id" />
     <item name="menu_share_text" type="id" />
+    <item name="menu_add_edit_save" type="id" />
 </resources>
