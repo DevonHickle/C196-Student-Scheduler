@@ -28,4 +28,11 @@
     <string name="noteTitle1">Title</string>
     <string name="name">Name</string>
     <string name="this_is_test_note_content">This is test note content</string>
+    <string name="assessmentName">Name</string>
+    <string name="type">Type</string>
+    <string name="objectiveAssessment">OA</string>
+    <string name="performanceAssessment">PA</string>
+    <string name="goalDate">Goal Date</string>
+    <string name="mmddyyyy">MM/DD/YYYY</string>
+    <string name="alarm">Alarm</string>
 </resources>
