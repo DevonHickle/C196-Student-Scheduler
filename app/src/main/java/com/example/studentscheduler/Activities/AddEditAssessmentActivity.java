@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -70,18 +71,26 @@ public class AddEditAssessmentActivity extends AppCompatActivity {
             editTitle.setText(parentIntent.getStringExtra(EXTRA_COURSE_ASSESSMENT_TITLE));
             editGoalDate.setText(parentIntent.getStringExtra(EXTRA_COURSE_ASSESSMENT_GOAL_DATE));
             editRadioType.check(getTypeBtnID(parentIntent.getIntExtra(EXTRA_ASSESSMENT_TYPE, -1)));
-            if(parentIntent.getBooleanExtra(EXTRA_COURSE_ASSESSMENT_ALERT, false));
+            if(parentIntent.getBooleanExtra(EXTRA_COURSE_ASSESSMENT_ALERT, false)));
                 checkAlarmEnabled.performClick();
         } else {
             setTitle("Add Assessment");
         }
+    }
 
-        // Save Assessment
+    private void saveNewAssessment() {
+        String assessmentTitle = editTitle.getText().toString();
+        String assessmentGoalDate = editGoalDate.getText().toString();
+        boolean alarmEnabled = checkAlarmEnabled.isChecked();
 
-
-        // Create and Item Select Options Menu
-
+        if (assessmentTitle.trim().isEmpty() || assessmentGoalDate.trim().isEmpty() || getTypeBtnID(editRadioType.getCheckedRadioButtonId()) != -1) {
+            Toast.makeText(this, "Unable to save assessment, fields are empty", Toast.LENGTH_SHORT).show();
         }
+
+        Intent data = new Intent();
+        data.putExtra(EXTRA_COURSE_ASSESSMENT_TITLE, assessmentTitle);
+        // Rest of Data puts go here
+    }
     //Update Label
     private void updateLabel() {
         String dateFormat = DATE_FORMAT;
