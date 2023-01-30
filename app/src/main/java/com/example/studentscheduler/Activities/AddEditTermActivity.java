@@ -17,6 +17,7 @@ import com.example.studentscheduler.R;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.Objects;
 
 public class AddEditTermActivity extends AppCompatActivity {
     public static final String EXTRA_TERM_TITLE = "com.example.studentscheduler.Activities.TERM_TITLE";
@@ -71,7 +72,7 @@ public class AddEditTermActivity extends AppCompatActivity {
                 calEndDate.get(Calendar.DAY_OF_MONTH)).show()
         );
 
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
+        Objects.requireNonNull(getSupportActionBar()).setHomeAsUpIndicator(R.drawable.ic_close_white_24dp);
         Intent intent = getIntent();
         if(intent.hasExtra(EXTRA_TERM_ID)) {
             setTitle("Edit Term");
@@ -112,15 +113,12 @@ public class AddEditTermActivity extends AppCompatActivity {
         return true;
     }
 
-    // Look into turning this into an If statement
     public boolean onOptionsItemSelected(@NonNull MenuItem menuItem) {
-        switch (menuItem.getItemId()) {
-            case R.id.menu_add_edit_save:
-                saveNewTerm();
-                return true;
-            default:
-                return super.onOptionsItemSelected(menuItem);
+        if (menuItem.getItemId() == R.id.menu_add_edit_save) {
+            saveNewTerm();
+            return true;
         }
+        return super.onOptionsItemSelected(menuItem);
     }
 
     public boolean onSupportNavigateUp() {
