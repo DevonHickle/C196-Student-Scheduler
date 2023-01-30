@@ -1,4 +1,4 @@
-package com.example.studentscheduler.Activities;
+package com.example.studentscheduler.Activities.AddEdit;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.studentscheduler.Activities.AssessmentListActivity;
 import com.example.studentscheduler.R;
 
 import java.text.SimpleDateFormat;
@@ -21,7 +22,7 @@ import java.util.Calendar;
 import java.util.Locale;
 import java.util.Objects;
 
-public class AddEditAssessmentActivity extends AppCompatActivity {
+public class AddEditAssessments extends AppCompatActivity {
     public static final String EXTRA_ASSESSMENT_ID = "";
     public static final String EXTRA_COURSE_ASSESSMENT_TITLE = "";
     public static final String EXTRA_COURSE_ASSESSMENT_GOAL_DATE = "";
