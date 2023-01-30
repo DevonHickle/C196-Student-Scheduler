@@ -6,7 +6,7 @@
     tools:context=".Activities.TermListActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/termListView"
+        android:id="@+id/termListRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/term_detail" />

@@ -1,5 +1,7 @@
 package com.example.studentscheduler.Activities;
 
+import static com.example.studentscheduler.R.*;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,16 +33,16 @@ public class TermListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.term_list);
+        setContentView(layout.term_list);
 
-        FloatingActionButton buttonAddTerm = findViewById(R.id.btn_add_term);
-        buttonAddTerm.setOnClickListener(b -> {
+        FloatingActionButton buttonAddTerm = findViewById(id.btn_add_term);
+        buttonAddTerm.setOnClickListener(view -> {
             Intent intent = new Intent(TermListActivity.this, AddEditTerms.class);
             //noinspection deprecation
             startActivityForResult(intent, ADD_TERM_REQ);
         });
 
-        RecyclerView recyclerView = findViewById(R.id.termListView);
+        RecyclerView recyclerView = findViewById(id.termListRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
 
