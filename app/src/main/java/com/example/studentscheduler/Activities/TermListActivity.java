@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.studentscheduler.Activities.AddEdit.AddEditTerms;
 import com.example.studentscheduler.Adapters.TermsAdapter;
 import com.example.studentscheduler.Models.TermModel;
 import com.example.studentscheduler.R;
@@ -34,7 +35,7 @@ public class TermListActivity extends AppCompatActivity {
 
         FloatingActionButton buttonAddTerm = findViewById(R.id.btn_add_term);
         buttonAddTerm.setOnClickListener(b -> {
-            Intent intent = new Intent(TermListActivity.this, AddEditTermActivity.class);
+            Intent intent = new Intent(TermListActivity.this, AddEditTerms.class);
             //noinspection deprecation
             startActivityForResult(intent, ADD_TERM_REQ);
         });
@@ -91,9 +92,9 @@ public class TermListActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == ADD_TERM_REQ && resultCode == RESULT_OK) {
             assert data != null;
-            String title = data.getStringExtra(AddEditTermActivity.EXTRA_TERM_TITLE);
-            String startDate = data.getStringExtra(AddEditTermActivity.EXTRA_TERM_START_DATE);
-            String endDate = data.getStringExtra(AddEditTermActivity.EXTRA_TERM_END_DATE);
+            String title = data.getStringExtra(AddEditTerms.EXTRA_TERM_TITLE);
+            String startDate = data.getStringExtra(AddEditTerms.EXTRA_TERM_START_DATE);
+            String endDate = data.getStringExtra(AddEditTerms.EXTRA_TERM_END_DATE);
 
             TermModel termEntity = new TermModel(title, startDate, endDate);
             termVM.insert(termEntity);

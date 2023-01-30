@@ -30,7 +30,7 @@
             android:label="Terms"
             android:parentActivityName=".Activities.MainActivity" />
         <activity
-            android:name=".Activities.AddEditTermActivity"
+            android:name=".Activities.AddEdit.AddEditTerms"
             android:launchMode="singleTop" />
     </application>
 </manifest>

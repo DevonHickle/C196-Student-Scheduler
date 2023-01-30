@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.studentscheduler.Activities.AddEdit.AddEditTerms;
 import com.example.studentscheduler.Models.TermModel;
 import com.example.studentscheduler.R;
 import com.example.studentscheduler.ViewModel.TermVM;
@@ -49,7 +50,7 @@ public class TermDetailActivity extends AppCompatActivity {
         textViewEndDate.setText(intent.getStringExtra(EXTRA_END_DATE));
 
         courseListButton.setOnClickListener(view -> {
-            Intent loadCourseList = new Intent(this, AddEditTermActivity.class);
+            Intent loadCourseList = new Intent(this, AddEditTerms.class);
             loadCourseList.putExtra(CourseListActivity.EXTRA_COURSE_TERM_ID, termID);
             loadCourseList.putExtra(CourseListActivity.EXTRA_COURSE_TERM_TITLE, intent.getStringExtra(EXTRA_TITLE));
             startActivity(loadCourseList);
@@ -57,11 +58,11 @@ public class TermDetailActivity extends AppCompatActivity {
 
         FloatingActionButton addTermButton = findViewById(R.id.btn_add_term);
         addTermButton.setOnClickListener(view -> {
-            Intent addTermIntent = new Intent(this, AddEditTermActivity.class);
-            addTermIntent.putExtra(AddEditTermActivity.EXTRA_TERM_ID, intent.getIntExtra(EXTRA_ID, -1));
-            addTermIntent.putExtra(AddEditTermActivity.EXTRA_TERM_TITLE, intent.getStringExtra(EXTRA_TITLE));
-            addTermIntent.putExtra(AddEditTermActivity.EXTRA_TERM_START_DATE, intent.getStringExtra(EXTRA_START_DATE));
-            addTermIntent.putExtra(AddEditTermActivity.EXTRA_TERM_END_DATE, intent.getStringExtra(EXTRA_END_DATE));
+            Intent addTermIntent = new Intent(this, AddEditTerms.class);
+            addTermIntent.putExtra(AddEditTerms.EXTRA_TERM_ID, intent.getIntExtra(EXTRA_ID, -1));
+            addTermIntent.putExtra(AddEditTerms.EXTRA_TERM_TITLE, intent.getStringExtra(EXTRA_TITLE));
+            addTermIntent.putExtra(AddEditTerms.EXTRA_TERM_START_DATE, intent.getStringExtra(EXTRA_START_DATE));
+            addTermIntent.putExtra(AddEditTerms.EXTRA_TERM_END_DATE, intent.getStringExtra(EXTRA_END_DATE));
             startActivityForResult(addTermIntent, EDIT_TERM_REQUEST);
         });
     }
@@ -70,10 +71,10 @@ public class TermDetailActivity extends AppCompatActivity {
         super.onActivityResult(request, result, data);
         if(request == EDIT_TERM_REQUEST && result == RESULT_OK) {
             assert data != null;
-            String title = data.getStringExtra(AddEditTermActivity.EXTRA_TERM_TITLE);
-            String startDate = data.getStringExtra(AddEditTermActivity.EXTRA_TERM_START_DATE);
-            String endDate = data.getStringExtra(AddEditTermActivity.EXTRA_TERM_END_DATE);
-            int id = data.getIntExtra(AddEditTermActivity.EXTRA_TERM_ID, -1);
+            String title = data.getStringExtra(AddEditTerms.EXTRA_TERM_TITLE);
+            String startDate = data.getStringExtra(AddEditTerms.EXTRA_TERM_START_DATE);
+            String endDate = data.getStringExtra(AddEditTerms.EXTRA_TERM_END_DATE);
+            int id = data.getIntExtra(AddEditTerms.EXTRA_TERM_ID, -1);
             if(id == -1) {
                 Toast.makeText(this, "Error! Unable to save term", Toast.LENGTH_SHORT).show();
             }
