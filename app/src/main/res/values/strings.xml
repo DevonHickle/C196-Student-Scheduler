@@ -35,4 +35,5 @@
     <string name="goalDate">Goal Date</string>
     <string name="mmddyyyy">MM/DD/YYYY</string>
     <string name="alarm">Alarm</string>
+    <string name="view_term_list">View Term List</string>
 </resources>
