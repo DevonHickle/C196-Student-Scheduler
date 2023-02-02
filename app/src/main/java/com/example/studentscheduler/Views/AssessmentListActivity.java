@@ -1,4 +1,4 @@
-package com.example.studentscheduler.Activities;
+package com.example.studentscheduler.Views;
 
 public class AssessmentListActivity {
     public static final int TYPE_PA = 1;

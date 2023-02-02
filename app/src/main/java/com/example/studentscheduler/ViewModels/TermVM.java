@@ -1,4 +1,4 @@
-package com.example.studentscheduler.ViewModel;
+package com.example.studentscheduler.ViewModels;
 
 import android.app.Application;
 

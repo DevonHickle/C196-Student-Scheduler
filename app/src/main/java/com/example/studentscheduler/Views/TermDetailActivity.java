@@ -1,4 +1,4 @@
-package com.example.studentscheduler.Activities;
+package com.example.studentscheduler.Views;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,10 +10,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.studentscheduler.Activities.AddEdit.AddEditTerms;
+import com.example.studentscheduler.Views.AddEdit.AddEditTerms;
 import com.example.studentscheduler.Models.TermModel;
 import com.example.studentscheduler.R;
-import com.example.studentscheduler.ViewModel.TermVM;
+import com.example.studentscheduler.ViewModels.TermVM;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class TermDetailActivity extends AppCompatActivity {

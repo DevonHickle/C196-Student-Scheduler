@@ -1,4 +1,4 @@
-package com.example.studentscheduler.Util;
+package com.example.studentscheduler.Database;
 
 import androidx.room.Delete;
 import androidx.room.Insert;

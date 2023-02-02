@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context=".Activities.AddEdit.AddEditAssessments">
+    tools:context=".Views.AddEdit.AddEditAssessments">
 
     <EditText
         android:id="@+id/edit_assessment_name"

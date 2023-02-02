@@ -3,7 +3,7 @@ package com.example.studentscheduler.Models;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import com.example.studentscheduler.Util.UtilEntity;
+import com.example.studentscheduler.Database.UtilEntity;
 
 @Entity(tableName = "terms")
 public class TermModel extends UtilEntity {

@@ -1,4 +1,4 @@
-package com.example.studentscheduler.Activities.AddEdit;
+package com.example.studentscheduler.Views.AddEdit;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -14,7 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.studentscheduler.Activities.AssessmentListActivity;
+import com.example.studentscheduler.Views.AssessmentListActivity;
 import com.example.studentscheduler.R;
 
 import java.text.SimpleDateFormat;

@@ -1,4 +1,4 @@
-package com.example.studentscheduler.Activities;
+package com.example.studentscheduler.Views;
 
 public class CourseListActivity {
     public static final String EXTRA_COURSE_TERM_ID = "";

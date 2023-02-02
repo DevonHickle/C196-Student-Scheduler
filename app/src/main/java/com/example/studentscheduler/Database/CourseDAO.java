@@ -9,7 +9,6 @@ import androidx.room.Update;
 import androidx.room.OnConflictStrategy;
 
 import com.example.studentscheduler.Models.CourseModel;
-import com.example.studentscheduler.Util.UtilDAO;
 
 import java.util.List;
 

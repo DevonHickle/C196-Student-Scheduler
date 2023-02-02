@@ -1,4 +1,4 @@
-package com.example.studentscheduler.Activities;
+package com.example.studentscheduler.Views;
 
 public class CourseDetailActivity {
     public static final int STATUS_IN_PROGRESS = 2;

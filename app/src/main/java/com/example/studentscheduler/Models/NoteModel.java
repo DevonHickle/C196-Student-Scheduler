@@ -6,7 +6,7 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-import com.example.studentscheduler.Util.UtilEntity;
+import com.example.studentscheduler.Database.UtilEntity;
 
 @Entity(tableName = "notes",
     foreignKeys = @ForeignKey(entity = CourseModel.class,

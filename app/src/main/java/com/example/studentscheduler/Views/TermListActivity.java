@@ -1,4 +1,4 @@
-package com.example.studentscheduler.Activities;
+package com.example.studentscheduler.Views;
 
 import static com.example.studentscheduler.R.*;
 
@@ -15,12 +15,12 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.studentscheduler.Activities.AddEdit.AddEditTerms;
+import com.example.studentscheduler.Views.AddEdit.AddEditTerms;
 import com.example.studentscheduler.Adapters.TermsAdapter;
 import com.example.studentscheduler.Models.TermModel;
 import com.example.studentscheduler.R;
-import com.example.studentscheduler.ViewModel.CourseVM;
-import com.example.studentscheduler.ViewModel.TermVM;
+import com.example.studentscheduler.ViewModels.CourseVM;
+import com.example.studentscheduler.ViewModels.TermVM;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.concurrent.ExecutionException;

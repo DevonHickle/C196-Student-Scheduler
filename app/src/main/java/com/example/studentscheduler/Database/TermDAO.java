@@ -9,7 +9,6 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.example.studentscheduler.Models.TermModel;
-import com.example.studentscheduler.Util.UtilDAO;
 
 import java.util.List;
 
