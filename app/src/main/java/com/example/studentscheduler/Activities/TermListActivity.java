@@ -33,7 +33,7 @@ public class TermListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(layout.term_list);
+        setContentView(R.layout.term_list);
 
         FloatingActionButton buttonAddTerm = findViewById(id.btn_add_term);
         buttonAddTerm.setOnClickListener(view -> {
