@@ -36,4 +36,9 @@
     <string name="mmddyyyy">MM/DD/YYYY</string>
     <string name="alarm">Alarm</string>
     <string name="view_term_list">View Term List</string>
+    <string name="course_title">Course Title</string>
+    <string name="course_end_date">End Date</string>
+    <string name="status">Status</string>
+    <string name="assessment_title">Title</string>
+    <string name="_01_01_2020">01-01-2020</string>
 </resources>
