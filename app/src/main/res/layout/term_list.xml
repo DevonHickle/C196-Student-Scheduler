@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -28,7 +29,7 @@
         android:id="@+id/addTerms"
         android:layout_width="wrap_content"
         android:layout_height="29dp"
-        android:text="Tap To Add Terms"
+        android:text="@string/tap_to_add_terms"
         app:layout_anchor="@+id/termListRecyclerView"
         app:layout_anchorGravity="end|bottom" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

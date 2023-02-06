@@ -28,7 +28,8 @@
         <activity
             android:name=".Views.TermListActivity"
             android:label="Terms"
-            android:parentActivityName=".Views.MainActivity" />
+            android:launchMode="singleTop"
+            android:parentActivityName=".Views.TopNavActivity" />
         <activity
             android:name=".Views.AddEdit.AddEditTerms"
             android:launchMode="singleTop"

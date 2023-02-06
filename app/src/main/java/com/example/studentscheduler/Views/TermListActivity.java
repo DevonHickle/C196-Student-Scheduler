@@ -42,12 +42,10 @@ public class TermListActivity extends AppCompatActivity {
             startActivityForResult(intent, ADD_TERM_REQ);
         });
 
-        RecyclerView recyclerView = findViewById(id.termListRecyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setHasFixedSize(true);
-
-        final TermsAdapter termsAdapter = new TermsAdapter();
+        RecyclerView recyclerView = findViewById(R.id.termListRecyclerView);
+        TermsAdapter termsAdapter = new TermsAdapter();
         recyclerView.setAdapter(termsAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         termVM = new ViewModelProvider(this).get(TermVM.class);
         termVM.getAllTerms().observe(this, termsAdapter::setTerms);
@@ -90,6 +88,7 @@ public class TermListActivity extends AppCompatActivity {
             startActivity(intent);
         });
     }
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == ADD_TERM_REQ && resultCode == RESULT_OK) {
