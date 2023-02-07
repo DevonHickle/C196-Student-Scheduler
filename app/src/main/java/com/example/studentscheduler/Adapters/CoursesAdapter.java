@@ -31,7 +31,7 @@ public class CoursesAdapter extends RecyclerView.Adapter<CoursesAdapter.CourseHo
         CourseModel currentCourse = courses.get(position);
         holder.courseTitle.setText(currentCourse.getTitle());
         holder.courseEndDate.setText(currentCourse.getEndDate());
-        holder.courseStatus.setText(CourseDetailActivity.getStatus(currentCourse.getEndDate()));
+        holder.courseStatus.setText(CourseDetailActivity.getStatus(currentCourse.getStatus()));
     }
 
     @Override
