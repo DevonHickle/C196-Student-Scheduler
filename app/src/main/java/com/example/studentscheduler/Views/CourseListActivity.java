@@ -1,9 +1,8 @@
 package com.example.studentscheduler.Views;
 
-import android.content.ClipData;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.AbsListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -26,9 +25,9 @@ public class CourseListActivity extends AppCompatActivity {
     public static final String EXTRA_COURSE_TERM_TITLE = "";
 
     private int termID;
-    private String termTitle;
     private CourseVM courseVM;
 
+    @SuppressLint("MissingInflatedId")
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
@@ -37,15 +36,15 @@ public class CourseListActivity extends AppCompatActivity {
         FloatingActionButton addCourseBtn = findViewById(R.id.add_course_button);
         addCourseBtn.setOnClickListener(view -> {
             Intent addCourseInt = new Intent(this, AddEditCourses.class);
-            startActivity(addCourseInt, AddEditCourses.REQUEST_ADD_COURSE);
+            startActivityForResult(addCourseInt, AddEditCourses.REQUEST_ADD_COURSE);
         });
 
         Intent loadCourseList = getIntent();
         termID = loadCourseList.getIntExtra(EXTRA_COURSE_TERM_TITLE, -1);
-        termTitle = loadCourseList.getStringExtra(EXTRA_COURSE_TERM_TITLE);
+        String termTitle = loadCourseList.getStringExtra(EXTRA_COURSE_TERM_TITLE);
         setTitle(termTitle + " Courses");
 
-        RecyclerView recyclerView = findViewById(R.id.CourseListView);
+        RecyclerView recyclerView = findViewById(R.id.courseListView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
 
@@ -86,11 +85,27 @@ public class CourseListActivity extends AppCompatActivity {
     }
 
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == AddEditCourses.REQUEST_ADD_COURSE && resultCode == RESULT_OK) {
-            int termID = getIntent().getIntExtra(EXTRA_COURSE_TERM_ID, -1);
-            String title = data.getStringExtra()
+
+        int termID = getIntent().getIntExtra(EXTRA_COURSE_TERM_ID, -1);
+        assert data != null;
+        String title = data.getStringExtra(AddEditCourses.EXTRA_COURSE_TITLE);
+        String startDate = data.getStringExtra(AddEditCourses.EXTRA_COURSE_START_DATE);
+        String endDate = data.getStringExtra(AddEditCourses.EXTRA_COURSE_END_DATE);
+        boolean courseAlert = data.getBooleanExtra(AddEditCourses.EXTRA_COURSE_ALERT, false);
+        int status = data.getIntExtra(AddEditCourses.EXTRA_COURSE_STATUS, -1);
+        String instructorName = data.getStringExtra(AddEditCourses.EXTRA_COURSE_INSTRUCTOR_NAME);
+        String instructorEmail = data.getStringExtra(AddEditCourses.EXTRA_COURSE_INSTRUCTOR_EMAIL);
+        String instructorPhone = data.getStringExtra(AddEditCourses.EXTRA_COURSE_INSTRUCTOR_PHONE);
+
+        if(termID == -1) throw new AssertionError("Term ID cannot be less than one");
+        CourseModel courseModel = new CourseModel(termID, title, startDate, endDate, courseAlert, status, instructorName, instructorEmail, instructorPhone);
+        courseVM.insert(courseModel);
+
+        Toast.makeText(this, title + " added", Toast.LENGTH_SHORT).show();
+
+        if(requestCode != AddEditCourses.REQUEST_ADD_COURSE && resultCode != RESULT_OK) {
+            Toast.makeText(this, "Unable to add course", Toast.LENGTH_SHORT).show();
         }
     }
 }

@@ -42,4 +42,5 @@
     <string name="assessment_title">Title</string>
     <string name="_01_01_2020">01-01-2020</string>
     <string name="tap_to_add_terms">Tap To Add Terms</string>
+    <string name="to_do">TODO</string>
 </resources>
