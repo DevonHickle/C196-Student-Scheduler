@@ -2,6 +2,7 @@ package com.example.studentscheduler.Views;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -51,6 +52,16 @@ public class CourseDetailActivity extends AppCompatActivity {
         courseVM = new ViewModelProvider(this).get(CourseVM.class);
         setContentView(R.layout.course_detail);
 
+        title = findViewById(R.id.detailed_course_title);
+        startDate = findViewById(R.id.detailed_course_start_date);
+        endDate = findViewById(R.id.detailed_course_end_date);
+        courseStatus = findViewById(R.id.detailed_course_status);
+        alarmImage = findViewById(R.id.detailed_image_alarm);
+        instructorName = findViewById(R.id.detailed_course_mentor_name);
+        instructorEmail = findViewById(R.id.detailed_course_mentor_email_address);
+        instructorPhone = findViewById(R.id.detailed_course_mentor_phone_number);
+
+        Intent parentIntent = getIntent();
         // TODO: Set layout IDs and other stuffs. Mimic after other Detail views
     }
 
