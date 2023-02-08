@@ -4,6 +4,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -62,9 +63,29 @@ public class CourseDetailActivity extends AppCompatActivity {
         instructorPhone = findViewById(R.id.detailed_course_mentor_phone_number);
 
         Intent parentIntent = getIntent();
-        // TODO: Set layout IDs and other stuffs. Mimic after other Detail views
+        termID = parentIntent.getIntExtra(EXTRA_COURSE_TERM_ID, -1);
+        courseID = parentIntent.getIntExtra(EXTRA_COURSE_ID, -1);
+
+        setTitle(parentIntent.getStringExtra(EXTRA_COURSE_TITLE));
+
+        this.courseTitle = parentIntent.getStringExtra(EXTRA_COURSE_TITLE);
+
+        title.setText(courseTitle);
+        startDate.setText(parentIntent.getStringExtra(EXTRA_COURSE_START_DATE));
+        endDate.setText(parentIntent.getStringExtra(EXTRA_COURSE_END_DATE));
+        status = parentIntent.getIntExtra(EXTRA_COURSE_STATUS, -1);
+        courseStatus.setText(CourseDetailActivity.getStatus(status));
+        instructorName.setText(parentIntent.getStringExtra(EXTRA_COURSE_INSTRUCTOR_NAME));
+        instructorPhone.setText(parentIntent.getStringExtra(EXTRA_COURSE_INSTRUCTOR_PHONE));
+        instructorEmail.setText(parentIntent.getStringExtra(EXTRA_COURSE_INSTRUCTOR_EMAIL));
+
+        isAlarmEnabled = parentIntent.getBooleanExtra(EXTRA_COURSE_ALERT, false);
+        if(isAlarmEnabled) {
+            alarmImage.setVisibility(View.VISIBLE);
+        } alarmImage.setVisibility(View.INVISIBLE);
     }
 
+    // TODO: Add additional intents for edit course button
 
     public static String getStatus(int status) {
         String result;
