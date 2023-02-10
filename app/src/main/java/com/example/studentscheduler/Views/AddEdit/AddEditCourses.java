@@ -12,4 +12,5 @@ public class AddEditCourses {
     public static final String EXTRA_COURSE_INSTRUCTOR_EMAIL = "";
     public static final String EXTRA_COURSE_INSTRUCTOR_PHONE = "";
     public static final String EXTRA_COURSE_ID = "";
+    public static final String DATE_FORMAT = "";
 }

@@ -13,10 +13,15 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.studentscheduler.Alarms.CoursesAlarm;
 import com.example.studentscheduler.R;
 import com.example.studentscheduler.ViewModels.CourseVM;
 import com.example.studentscheduler.Views.AddEdit.AddEditCourses;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 public class CourseDetailActivity extends AppCompatActivity {
     public static final int STATUS_IN_PROGRESS = 2;
@@ -38,43 +43,38 @@ public class CourseDetailActivity extends AppCompatActivity {
     PendingIntent startCoursePendingIntent;
     PendingIntent endCoursePendingIntent;
 
-    private CourseVM courseVM;
-
-    private int termID;
     private int courseID;
-    private String courseTitle;
+    private int status;
     private TextView title;
     private TextView startDate;
     private TextView endDate;
-    private int status;
-    private TextView courseStatus;
     private TextView instructorName;
     private TextView instructorPhone;
     private TextView instructorEmail;
-    private boolean isAlarmEnabled;
     private ImageView alarmImage;
+    private boolean isAlarmEnabled;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        courseVM = new ViewModelProvider(this).get(CourseVM.class);
+        CourseVM courseVM = new ViewModelProvider(this).get(CourseVM.class);
         setContentView(R.layout.course_detail);
 
         title = findViewById(R.id.detailed_course_title);
         startDate = findViewById(R.id.detailed_course_start_date);
         endDate = findViewById(R.id.detailed_course_end_date);
-        courseStatus = findViewById(R.id.detailed_course_status);
+        TextView courseStatus = findViewById(R.id.detailed_course_status);
         alarmImage = findViewById(R.id.detailed_image_alarm);
         instructorName = findViewById(R.id.detailed_course_mentor_name);
         instructorEmail = findViewById(R.id.detailed_course_mentor_email_address);
         instructorPhone = findViewById(R.id.detailed_course_mentor_phone_number);
 
         Intent parentIntent = getIntent();
-        termID = parentIntent.getIntExtra(EXTRA_COURSE_TERM_ID, -1);
+        int termID = parentIntent.getIntExtra(EXTRA_COURSE_TERM_ID, -1);
         courseID = parentIntent.getIntExtra(EXTRA_COURSE_ID, -1);
 
         setTitle(parentIntent.getStringExtra(EXTRA_COURSE_TITLE));
 
-        this.courseTitle = parentIntent.getStringExtra(EXTRA_COURSE_TITLE);
+        String courseTitle = parentIntent.getStringExtra(EXTRA_COURSE_TITLE);
 
         title.setText(courseTitle);
         startDate.setText(parentIntent.getStringExtra(EXTRA_COURSE_START_DATE));
@@ -106,9 +106,9 @@ public class CourseDetailActivity extends AppCompatActivity {
         });
     }
 
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if(requestCode == EDIT_COURSE_REQUEST && resultCode == RESULT_OK) {
             assert data != null;
             int courseID = data.getIntExtra(AddEditCourses.EXTRA_COURSE_ID, -1);
@@ -116,7 +116,7 @@ public class CourseDetailActivity extends AppCompatActivity {
             String startDate = data.getStringExtra(AddEditCourses.EXTRA_COURSE_START_DATE);
             String endDate = data.getStringExtra(AddEditCourses.EXTRA_COURSE_END_DATE);
             boolean isAlarmEnabled = data.getBooleanExtra(AddEditCourses.EXTRA_COURSE_ALERT, false);
-            int status = data.getIntExtra(AddEditCourses.EXTRA_COURSE_STATUS, -1);
+            int courseStatus = data.getIntExtra(AddEditCourses.EXTRA_COURSE_STATUS, -1);
             String instructorName = data.getStringExtra(AddEditCourses.EXTRA_COURSE_INSTRUCTOR_NAME);
             String instructorPhone = data.getStringExtra(AddEditCourses.EXTRA_COURSE_INSTRUCTOR_PHONE);
             String instructorEmail = data.getStringExtra(AddEditCourses.EXTRA_COURSE_INSTRUCTOR_EMAIL);
@@ -128,9 +128,31 @@ public class CourseDetailActivity extends AppCompatActivity {
                 alarmImage.setVisibility(View.VISIBLE);
             } alarmImage.setVisibility(View.INVISIBLE);
 
-            // TODO: add set texts
+            title.setText(title);
+            startDate.setText(startDate);
+            endDate.setText(endDate);
+            courseStatus.setText(getStatus(courseStatus));
+            instructorName.setText(instructorName);
+            instructorEmail.setText(instructorEmail);
+            instructorPhone.setText(instructorPhone);
 
-            //TODO: add alarm notifications
+            if (isAlarmEnabled == true) {
+                alarmManager = (AlarmManager) this.getSystemService(ALARM_SERVICE);
+                Intent startCourseAlarm = new Intent(this, CoursesAlarm.class);
+                startCourseAlarm.putExtra(CoursesAlarm.ALARM_NOTIFICATION_TITLE, title + " Alert!");
+                startCourseAlarm.putExtra(CoursesAlarm.ALARM_NOTIFICATION_TEXT, title + " will be starting soon (" + startDate + ")");
+
+                Intent endCourseAlarm = new Intent(this, CoursesAlarm.class);
+                endCourseAlarm.putExtra(CoursesAlarm.ALARM_NOTIFICATION_TITLE, title + " Alert!");
+                endCourseAlarm.putExtra(CoursesAlarm.ALARM_NOTIFICATION_TEXT, title + " will be ending soon (" + endDate + ")");
+
+                Calendar startCourseCalendarAlert = Calendar.getInstance();
+                Calendar endCourseCalendarAlert = Calendar.getInstance();
+                SimpleDateFormat dateFormat = new SimpleDateFormat(AddEditCourses.DATE_FORMAT, Locale.ENGLISH);
+
+                // TODO: Finish calendar alerts
+            }
+
         }
     }
 
