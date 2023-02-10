@@ -204,13 +204,13 @@ public class CourseDetailActivity extends AppCompatActivity {
             case R.id.course_detail_menu_notes:
                 Intent loadCourseNotes = new Intent(this, CourseNotesActivity.class);
                 loadCourseNotes.putExtra(CourseNotesActivity.EXTRA_COURSE_ID, courseID);
-                loadCourseNotes.putExtra(CourseNotesActivity.EXTRA_COURSE_TITLE, title);
+                loadCourseNotes.putExtra(CourseNotesActivity.EXTRA_COURSE_TITLE, (CharSequence) title);
                 startActivity(loadCourseNotes);
                 return true;
             case R.id.course_detail_menu_assessments:
                 Intent loadCourseAssessments = new Intent(this, AssessmentListActivity.class);
                 loadCourseAssessments.putExtra(AssessmentListActivity.EXTRA_COURSE_ID, courseID);
-                loadCourseAssessments.putExtra(AssessmentListActivity.EXTRA_COURSE_TITLE, title);
+                loadCourseAssessments.putExtra(AssessmentListActivity.EXTRA_COURSE_TITLE, (CharSequence) title);
                 startActivity(loadCourseAssessments);
                 return true;
             default:
