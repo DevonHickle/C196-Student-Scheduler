@@ -32,6 +32,8 @@ public class CourseNotesActivity extends AppCompatActivity {
             "com.example.studentscheduler.Activities.NOTE_CONTENT";
 
     public static final int EDIT_NOTE_REQUEST = 2;
+    public static final String EXTRA_COURSE_ID = ;
+    public static final String EXTRA_COURSE_TITLE = ;
 
     private NoteVM noteVM;
 

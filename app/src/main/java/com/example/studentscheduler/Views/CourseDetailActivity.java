@@ -1,27 +1,35 @@
 package com.example.studentscheduler.Views;
 
+import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.studentscheduler.Alarms.CoursesAlarm;
+import com.example.studentscheduler.Models.CourseModel;
 import com.example.studentscheduler.R;
 import com.example.studentscheduler.ViewModels.CourseVM;
 import com.example.studentscheduler.Views.AddEdit.AddEditCourses;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.Objects;
 
 public class CourseDetailActivity extends AppCompatActivity {
     public static final int STATUS_IN_PROGRESS = 2;
@@ -38,11 +46,14 @@ public class CourseDetailActivity extends AppCompatActivity {
     public static final String EXTRA_COURSE_INSTRUCTOR_PHONE = "";
 
     public static final int EDIT_COURSE_REQUEST = 5;
+    private static final int ALARM_COURSE_START = 50;
+    private static final int ALARM_COURSE_END = 100;
 
     private AlarmManager alarmManager;
     PendingIntent startCoursePendingIntent;
     PendingIntent endCoursePendingIntent;
-
+    private CourseVM courseVM;
+    private int termID;
     private int courseID;
     private int status;
     private TextView title;
@@ -56,7 +67,7 @@ public class CourseDetailActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        CourseVM courseVM = new ViewModelProvider(this).get(CourseVM.class);
+        courseVM = new ViewModelProvider(this).get(CourseVM.class);
         setContentView(R.layout.course_detail);
 
         title = findViewById(R.id.detailed_course_title);
@@ -69,7 +80,7 @@ public class CourseDetailActivity extends AppCompatActivity {
         instructorPhone = findViewById(R.id.detailed_course_mentor_phone_number);
 
         Intent parentIntent = getIntent();
-        int termID = parentIntent.getIntExtra(EXTRA_COURSE_TERM_ID, -1);
+        termID = parentIntent.getIntExtra(EXTRA_COURSE_TERM_ID, -1);
         courseID = parentIntent.getIntExtra(EXTRA_COURSE_ID, -1);
 
         setTitle(parentIntent.getStringExtra(EXTRA_COURSE_TITLE));
@@ -106,6 +117,7 @@ public class CourseDetailActivity extends AppCompatActivity {
         });
     }
 
+    @SuppressLint("UnspecifiedImmutableFlag")
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -150,9 +162,59 @@ public class CourseDetailActivity extends AppCompatActivity {
                 Calendar endCourseCalendarAlert = Calendar.getInstance();
                 SimpleDateFormat dateFormat = new SimpleDateFormat(AddEditCourses.DATE_FORMAT, Locale.ENGLISH);
 
-                // TODO: Finish calendar alerts
+                try {
+                    startCourseCalendarAlert.setTime(Objects.requireNonNull(dateFormat.parse(startDate)));
+                    startCourseCalendarAlert.set(Calendar.HOUR, 8);
+                    endCourseCalendarAlert.setTime(Objects.requireNonNull(dateFormat.parse(endDate)));
+                    endCourseCalendarAlert.set(Calendar.HOUR, 8);
+                } catch (ParseException e) {
+                    throw new RuntimeException(e);
+                }
+
+                startCoursePendingIntent = PendingIntent.getBroadcast(this, ALARM_COURSE_START, startCourseAlarm, 0);
+                endCoursePendingIntent = PendingIntent.getBroadcast(this, ALARM_COURSE_END, endCourseAlarm, 0);
+
+                alarmManager.set(AlarmManager.RTC, startCourseCalendarAlert.getTimeInMillis(), startCoursePendingIntent);
+                alarmManager.set(AlarmManager.RTC, endCourseCalendarAlert.getTimeInMillis(), endCoursePendingIntent);
+            } else {
+                if(alarmManager != null) {
+                    alarmManager.cancel(startCoursePendingIntent);
+                    alarmManager.cancel(endCoursePendingIntent);
+                    startCoursePendingIntent.cancel();
+                    endCoursePendingIntent.cancel();
+                }
             }
 
+            CourseModel courseModel = new CourseModel(termID, title, startDate, endDate, isAlarmEnabled, courseStatus, instructorName, instructorPhone, instructorEmail);
+            courseModel.setId(courseID);
+            courseVM.update(courseModel);
+            Toast.makeText(this, "Course updated successfully", Toast.LENGTH_SHORT).show();
+        } Toast.makeText(this, "Unable to update course", Toast.LENGTH_SHORT).show();
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.course_detail, menu);
+        return true;
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    public boolean onOptionsItemSelected(@NonNull MenuItem menuItem) {
+        switch(menuItem.getItemId()) {
+            case R.id.course_detail_menu_notes:
+                Intent loadCourseNotes = new Intent(this, CourseNotesActivity.class);
+                loadCourseNotes.putExtra(CourseNotesActivity.EXTRA_COURSE_ID, courseID);
+                loadCourseNotes.putExtra(CourseNotesActivity.EXTRA_COURSE_TITLE, title);
+                startActivity(loadCourseNotes);
+                return true;
+            case R.id.course_detail_menu_assessments:
+                Intent loadCourseAssessments = new Intent(this, AssessmentListActivity.class);
+                loadCourseAssessments.putExtra(AssessmentListActivity.EXTRA_COURSE_ID, courseID);
+                loadCourseAssessments.putExtra(AssessmentListActivity.EXTRA_COURSE_TITLE, title);
+                startActivity(loadCourseAssessments);
+                return true;
+            default:
+                return super.onOptionsItemSelected(menuItem);
         }
     }
 
