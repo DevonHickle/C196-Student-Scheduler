@@ -6,18 +6,17 @@
     tools:context=".Views.TermListActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/termListRecyclerView"
+        android:id="@+id/termListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/term_detail" />
+        tools:listitem="@layout/single_term" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_add_term"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_add_white_24dp"
-        android:layout_gravity="bottom|right"
+        android:layout_gravity="bottom|end"
         android:layout_margin="32dp"
-        android:contentDescription="@string/pending"
-        tools:ignore="RtlHardcoded" />
+        android:contentDescription="@string/todo4" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

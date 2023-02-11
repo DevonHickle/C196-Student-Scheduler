@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <item
+        android:id="@+id/course_detail_menu_notes"
+        android:title="@string/notes" />
+    <item
+        android:id="@+id/course_detail_menu_assessments"
+        android:title="@string/assessments" />
 </menu>

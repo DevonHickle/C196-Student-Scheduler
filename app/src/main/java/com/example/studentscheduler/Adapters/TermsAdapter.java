@@ -22,9 +22,9 @@ public class TermsAdapter extends RecyclerView.Adapter<TermsAdapter.TermHolder> 
     @NonNull
     @Override
     public TermHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.term_item, parent, false);
-        return new TermHolder(itemView);
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.single_term, parent, false);
+        return new TermHolder(view);
     }
 
     @Override

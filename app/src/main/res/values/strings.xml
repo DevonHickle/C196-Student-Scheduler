@@ -59,4 +59,8 @@
     <string name="email">Email</string>
     <string name="course_detail_todo">TODO</string>
     <string name="todo2">TODO</string>
+    <string name="todo3">TODO</string>
+    <string name="todo4">TODO</string>
+    <string name="notes">Notes</string>
+    <string name="assessments">Assessments</string>
 </resources>

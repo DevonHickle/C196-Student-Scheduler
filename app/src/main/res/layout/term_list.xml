@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,25 +9,14 @@
         android:id="@+id/termListRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/term_list" />
+        tools:listitem="@layout/single_term" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_add_term"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:layout_margin="32dp"
-        android:contentDescription="@string/pending"
         android:src="@drawable/ic_add_white_24dp"
-        app:layout_anchor="@+id/termListRecyclerView"
-        app:layout_anchorGravity="end|bottom"
-        tools:ignore="RtlHardcoded" />
-
-    <TextView
-        android:id="@+id/addTerms"
-        android:layout_width="wrap_content"
-        android:layout_height="29dp"
-        android:text="@string/tap_to_add_terms"
-        app:layout_anchor="@+id/termListRecyclerView"
-        app:layout_anchorGravity="end|bottom" />
+        android:layout_gravity="bottom|end"
+        android:layout_margin="32dp"
+        android:contentDescription="@string/todo3" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
