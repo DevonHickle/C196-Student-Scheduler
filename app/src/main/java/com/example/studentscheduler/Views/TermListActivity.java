@@ -43,9 +43,11 @@ public class TermListActivity extends AppCompatActivity {
         });
 
         RecyclerView recyclerView = findViewById(R.id.termListRecyclerView);
+        LinearLayoutManager manager = new LinearLayoutManager(this);
+        recyclerView.setHasFixedSize(true);
         TermsAdapter termsAdapter = new TermsAdapter();
         recyclerView.setAdapter(termsAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(manager);
 
         termVM = new ViewModelProvider(this).get(TermVM.class);
         termVM.getAllTerms().observe(this, termsAdapter::setTerms);
@@ -97,8 +99,8 @@ public class TermListActivity extends AppCompatActivity {
             String startDate = data.getStringExtra(AddEditTerms.EXTRA_TERM_START_DATE);
             String endDate = data.getStringExtra(AddEditTerms.EXTRA_TERM_END_DATE);
 
-            TermModel termEntity = new TermModel(title, startDate, endDate);
-            termVM.insert(termEntity);
+            TermModel termModel = new TermModel(title, startDate, endDate);
+            termVM.insert(termModel);
 
             Toast.makeText(this, "Term added!", Toast.LENGTH_SHORT).show();
         } else {
