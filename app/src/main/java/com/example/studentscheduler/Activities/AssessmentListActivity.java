@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -73,7 +74,27 @@ public class AssessmentListActivity extends AppCompatActivity {
             loadAssessment.putExtra(AssessmentDetailActivity.EXTRA_ASSESSMENT_COURSE_ID, courseID);
             loadAssessment.putExtra(AssessmentDetailActivity.EXTRA_ASSESSMENT_COURSE_TITLE, courseTitle);
             loadAssessment.putExtra(AssessmentDetailActivity.EXTRA_ASSESSMENT_ID, assessmentModel.getId());
-
+            loadAssessment.putExtra(AssessmentDetailActivity.EXTRA_ASSESSMENT_TITLE, assessmentModel.getName());
+            loadAssessment.putExtra(AssessmentDetailActivity.EXTRA_ASSESSMENT_TYPE, assessmentModel.getType());
+            loadAssessment.putExtra(AssessmentDetailActivity.EXTRA_ASSESSMENT_DUE_DATE, assessmentModel.getGoalDate());
+            loadAssessment.putExtra(AssessmentDetailActivity.EXTRA_ASSESSMENT_ALARM, assessmentModel.getAlert());
+            startActivity(loadAssessment);
         });
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == ADD_ASSESSMENT_REQUEST && resultCode == RESULT_OK) {
+            int courseID = getIntent().getIntExtra(EXTRA_COURSE_ID, -1);
+            assert data != null;
+            String assessmentName = data.getStringExtra(AddEditAssessments.EXTRA_COURSE_ASSESSMENT_TITLE);
+            int assessmentType = data.getIntExtra(AddEditAssessments.EXTRA_ASSESSMENT_TYPE, -1);
+            String assessmentGoalDate = data.getStringExtra(AddEditAssessments.EXTRA_COURSE_ASSESSMENT_GOAL_DATE);
+            boolean assessmentAlertEnabled = data.getBooleanExtra(AddEditAssessments.EXTRA_COURSE_ASSESSMENT_ALERT, false);
+
+            AssessmentModel assessmentModel = new AssessmentModel(courseID, assessmentName, assessmentType, assessmentGoalDate, assessmentAlertEnabled);
+
+            assessmentVM.insert(assessmentModel);
+        }
     }
 }
