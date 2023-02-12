@@ -1,4 +1,4 @@
-package com.example.studentscheduler.Views;
+package com.example.studentscheduler.Activities;
 
 import android.annotation.SuppressLint;
 import android.app.AlarmManager;
@@ -22,7 +22,7 @@ import com.example.studentscheduler.Alarms.CoursesAlarm;
 import com.example.studentscheduler.Models.CourseModel;
 import com.example.studentscheduler.R;
 import com.example.studentscheduler.ViewModels.CourseVM;
-import com.example.studentscheduler.Views.AddEdit.AddEditCourses;
+import com.example.studentscheduler.Activities.AddEdit.AddEditCourses;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.ParseException;
@@ -210,7 +210,7 @@ public class CourseDetailActivity extends AppCompatActivity {
                 startActivity(loadCourseNotes);
                 return true;
             case R.id.course_detail_menu_assessments:
-                Intent loadCourseAssessments = new Intent(this, AssessmentListActivity.class);
+                Intent loadCourseAssessments = new Intent(this, AssessmentDetailActivity.class);
                 loadCourseAssessments.putExtra(AssessmentListActivity.EXTRA_COURSE_ID, courseID);
                 loadCourseAssessments.putExtra(AssessmentListActivity.EXTRA_COURSE_TITLE, (CharSequence) tvTitle);
                 startActivity(loadCourseAssessments);

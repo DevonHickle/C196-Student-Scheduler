@@ -1,4 +1,4 @@
-package com.example.studentscheduler.Views.AddEdit;
+package com.example.studentscheduler.Activities.AddEdit;
 
 public class AddEditCourses {
     // TODO: Add Paths

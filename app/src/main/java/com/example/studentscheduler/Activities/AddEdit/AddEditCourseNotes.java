@@ -1,4 +1,4 @@
-package com.example.studentscheduler.Views.AddEdit;
+package com.example.studentscheduler.Activities.AddEdit;
 
 import android.content.Intent;
 import android.os.Bundle;

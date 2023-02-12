@@ -1,4 +1,4 @@
-package com.example.studentscheduler.Views;
+package com.example.studentscheduler.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.studentscheduler.Views.AddEdit.AddEditCourseNotes;
+import com.example.studentscheduler.Activities.AddEdit.AddEditCourseNotes;
 import com.example.studentscheduler.Models.NoteModel;
 import com.example.studentscheduler.R;
 import com.example.studentscheduler.ViewModels.NoteVM;

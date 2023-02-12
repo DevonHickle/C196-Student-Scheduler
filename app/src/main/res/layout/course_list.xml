@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Views.CourseListActivity">
+    tools:context=".Activities.CourseListActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/courseListView"

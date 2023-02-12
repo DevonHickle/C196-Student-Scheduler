@@ -1,4 +1,4 @@
-package com.example.studentscheduler.Views.AddEdit;
+package com.example.studentscheduler.Activities.AddEdit;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;

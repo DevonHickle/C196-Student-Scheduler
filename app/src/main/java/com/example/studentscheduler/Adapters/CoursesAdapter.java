@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.studentscheduler.Models.CourseModel;
 import com.example.studentscheduler.R;
-import com.example.studentscheduler.Views.CourseDetailActivity;
+import com.example.studentscheduler.Activities.CourseDetailActivity;
 
 import java.util.ArrayList;
 import java.util.List;

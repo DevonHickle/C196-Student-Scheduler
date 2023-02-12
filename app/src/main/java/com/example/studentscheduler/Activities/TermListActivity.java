@@ -1,4 +1,4 @@
-package com.example.studentscheduler.Views;
+package com.example.studentscheduler.Activities;
 
 import static com.example.studentscheduler.R.*;
 
@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.studentscheduler.Views.AddEdit.AddEditTerms;
+import com.example.studentscheduler.Activities.AddEdit.AddEditTerms;
 import com.example.studentscheduler.Adapters.TermsAdapter;
 import com.example.studentscheduler.Models.TermModel;
 import com.example.studentscheduler.R;

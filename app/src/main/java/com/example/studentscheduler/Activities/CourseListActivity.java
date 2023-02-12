@@ -1,4 +1,4 @@
-package com.example.studentscheduler.Views;
+package com.example.studentscheduler.Activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -17,7 +17,7 @@ import com.example.studentscheduler.Adapters.CoursesAdapter;
 import com.example.studentscheduler.Models.CourseModel;
 import com.example.studentscheduler.R;
 import com.example.studentscheduler.ViewModels.CourseVM;
-import com.example.studentscheduler.Views.AddEdit.AddEditCourses;
+import com.example.studentscheduler.Activities.AddEdit.AddEditCourses;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class CourseListActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.example.studentscheduler.Views.AddEdit;
+package com.example.studentscheduler.Activities.AddEdit;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -14,7 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.studentscheduler.Views.AssessmentListActivity;
+import com.example.studentscheduler.Activities.AssessmentDetailActivity;
 import com.example.studentscheduler.R;
 
 import java.text.SimpleDateFormat;
@@ -130,9 +130,9 @@ public class AddEditAssessments extends AppCompatActivity {
 
     private int getTypeBtnID(int id1) {
         int buttonID;
-        if (id1 == AssessmentListActivity.TYPE_PA) {
+        if (id1 == AssessmentDetailActivity.TYPE_PA) {
             buttonID = R.id.radio_assessment_type_pa;
-        } else if (id1 == AssessmentListActivity.TYPE_OA) {
+        } else if (id1 == AssessmentDetailActivity.TYPE_OA) {
             buttonID = R.id.radio_assessment_type_oa;
         } else {
             buttonID = -1;
@@ -143,9 +143,9 @@ public class AddEditAssessments extends AppCompatActivity {
     private int getRadioType(int id2) {
         int typeID;
         if (id2 == R.id.radio_assessment_type_pa) {
-            typeID = AssessmentListActivity.TYPE_PA;
+            typeID = AssessmentDetailActivity.TYPE_PA;
         } else if (id2 == R.id.radio_assessment_type_oa) {
-            typeID = AssessmentListActivity.TYPE_OA;
+            typeID = AssessmentDetailActivity.TYPE_OA;
         } else {
             typeID = -1;
         }
