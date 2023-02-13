@@ -63,4 +63,12 @@
     <string name="todo4">TODO</string>
     <string name="notes">Notes</string>
     <string name="assessments">Assessments</string>
+    <string name="assessment_todo">TODO</string>
+    <string name="assessment_detail_title">Assessment Title</string>
+    <string name="assessment_detail_type">Type</string>
+    <string name="pa">PA</string>
+    <string name="assessment_detail_textview">TextView</string>
+    <string name="due_date">Due Date</string>
+    <string name="todo_detail">TODO</string>
+    <string name="todo_detail2">TODO</string>
 </resources>

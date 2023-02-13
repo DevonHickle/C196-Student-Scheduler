@@ -1,6 +1,5 @@
 package com.example.studentscheduler.Activities;
 
-import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -48,7 +47,7 @@ public class AssessmentListActivity extends AppCompatActivity {
         //Recycler View
         RecyclerView recyclerView = findViewById(R.id.assessmentListRecyclerView);
         LinearLayoutManager manager = new LinearLayoutManager(this);
-        recyclerView.hasFixedSize(true);
+        recyclerView.hasFixedSize();
         AssessmentsAdapter adapter = new AssessmentsAdapter();
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(manager);
@@ -61,11 +60,11 @@ public class AssessmentListActivity extends AppCompatActivity {
                 return false;
             }
 
-            @Override
+            // TODO: Figure out why this isn't working
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 AssessmentModel deletedAssessment = adapter.getAssessments(viewHolder.getAdapterPosition());
                 assessmentVM.delete(deletedAssessment);
-                Toast.makeText(this, "Assessment Successfully Removed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AssessmentListActivity.this, "Assessment Successfully Removed", Toast.LENGTH_SHORT).show();
             }
         }).attachToRecyclerView(recyclerView);
 

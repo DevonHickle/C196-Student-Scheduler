@@ -21,7 +21,7 @@ public class AssessmentsAdapter extends RecyclerView.Adapter<AssessmentsAdapter.
     @NonNull
     @Override
     public AssessmentHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.assessment_item, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_assessment, parent, false);
         return new AssessmentHolder(itemView);
     }
 
