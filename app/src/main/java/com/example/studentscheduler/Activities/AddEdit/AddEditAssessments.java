@@ -30,6 +30,8 @@ public class AddEditAssessments extends AppCompatActivity {
     public static final String EXTRA_ASSESSMENT_TYPE = "";
 
     public static final String DATE_FORMAT = "MM/dd/yyyy";
+    public static final int EDIT_ASSESSMENT_REQUEST = 1;
+    public static final String EXTRA_COURSE_ID = "";
 
     private Calendar calGoalDate;
 
