@@ -40,10 +40,8 @@ public class TermsAdapter extends RecyclerView.Adapter<TermsAdapter.TermHolder> 
         return terms.size();
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     public void setTerms(List<TermModel> terms) {
         this.terms = terms;
-        notifyDataSetChanged();
     }
 
     public TermModel getTermAt(int position) {
