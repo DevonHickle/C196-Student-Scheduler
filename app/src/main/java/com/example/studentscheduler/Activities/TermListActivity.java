@@ -35,6 +35,7 @@ public class TermListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.term_list);
 
         FloatingActionButton buttonAddTerm = findViewById(id.btn_add_term);
         buttonAddTerm.setOnClickListener(view -> {
@@ -42,61 +43,55 @@ public class TermListActivity extends AppCompatActivity {
             //noinspection deprecation
             startActivityForResult(intent, ADD_TERM_REQ);
         });
-    }
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup viewGroup, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.term_list, viewGroup, false);
-    }
+        RecyclerView recyclerView = findViewById(R.id.termListRecyclerView);
+        LinearLayoutManager manager = new LinearLayoutManager(this);
+        manager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(manager);
+        recyclerView.setHasFixedSize(true);
+        TermsAdapter termsAdapter = new TermsAdapter();
+        recyclerView.setAdapter(termsAdapter);
 
-        public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-            RecyclerView recyclerView = findViewById(R.id.termListRecyclerView);
-            LinearLayoutManager manager = new LinearLayoutManager(this);
-            manager.setOrientation(LinearLayoutManager.VERTICAL);
-            recyclerView.setLayoutManager(manager);
-            recyclerView.setHasFixedSize(true);
-            TermsAdapter termsAdapter = new TermsAdapter();
-            recyclerView.setAdapter(termsAdapter);
-
-            termVM = new ViewModelProvider(this).get(TermVM.class);
-            termVM.getAllTerms().observe(this, termsAdapter::setTerms);
+        termVM = new ViewModelProvider(this).get(TermVM.class);
+        termVM.getAllTerms().observe(this, termsAdapter::setTerms);
 
 
-            CourseVM courseVM = new ViewModelProvider(this).get(CourseVM.class);
+        CourseVM courseVM = new ViewModelProvider(this).get(CourseVM.class);
 
-            ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
-                public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-                    return false;
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                TermModel deletedTerm = termsAdapter.getTermAt(viewHolder.getAdapterPosition());
+
+                int relatedCourse = 0;
+                try {
+                    relatedCourse = courseVM.getTermCourses(deletedTerm.getId()).size();
+                } catch (ExecutionException | InterruptedException e) {
+                    e.printStackTrace();
                 }
 
-                public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                    TermModel deletedTerm = termsAdapter.getTermAt(viewHolder.getAdapterPosition());
-
-                    int relatedCourse = 0;
-                    try {
-                        relatedCourse = courseVM.getTermCourses(deletedTerm.getId()).size();
-                    } catch (ExecutionException | InterruptedException e) {
-                        e.printStackTrace();
-                    }
-
-                    if (relatedCourse > 0) {
-                        Toast.makeText(TermListActivity.this, "Courses are still attached to this term, cannot delete term", Toast.LENGTH_SHORT).show();
-                    } else {
-                        termVM.delete(deletedTerm);
-                        Toast.makeText(TermListActivity.this, "Term successfully deleted", Toast.LENGTH_SHORT).show();
-                    }
+                if (relatedCourse > 0) {
+                    Toast.makeText(TermListActivity.this, "Courses are still attached to this term, cannot delete term", Toast.LENGTH_SHORT).show();
+                } else {
+                    termVM.delete(deletedTerm);
+                    Toast.makeText(TermListActivity.this, "Term successfully deleted", Toast.LENGTH_SHORT).show();
                 }
-            });
-            itemTouchHelper.attachToRecyclerView(recyclerView);
+            }
+        });
+        itemTouchHelper.attachToRecyclerView(recyclerView);
 
-            termsAdapter.setOnItemClickListener(termEntity -> {
-                Intent intent = new Intent(TermListActivity.this, TermDetailActivity.class);
-                intent.putExtra(TermDetailActivity.EXTRA_ID, termEntity.getId());
-                intent.putExtra(TermDetailActivity.EXTRA_TITLE, termEntity.getTitle());
-                intent.putExtra(TermDetailActivity.EXTRA_START_DATE, termEntity.getStartDate());
-                intent.putExtra(TermDetailActivity.EXTRA_END_DATE, termEntity.getEndDate());
-                startActivity(intent);
-            });
-        }
+        termsAdapter.setOnItemClickListener(termEntity -> {
+            Intent intent = new Intent(TermListActivity.this, TermDetailActivity.class);
+            intent.putExtra(TermDetailActivity.EXTRA_ID, termEntity.getId());
+            intent.putExtra(TermDetailActivity.EXTRA_TITLE, termEntity.getTitle());
+            intent.putExtra(TermDetailActivity.EXTRA_START_DATE, termEntity.getStartDate());
+            intent.putExtra(TermDetailActivity.EXTRA_END_DATE, termEntity.getEndDate());
+            startActivity(intent);
+        });
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
