@@ -40,8 +40,9 @@ public class TermsAdapter extends RecyclerView.Adapter<TermsAdapter.TermHolder> 
         return terms.size();
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     public void setTerms(List<TermModel> terms) {
-        this.terms = terms;
+        this.terms = terms; notifyDataSetChanged();
     }
 
     public TermModel getTermAt(int position) {
@@ -59,8 +60,8 @@ public class TermsAdapter extends RecyclerView.Adapter<TermsAdapter.TermHolder> 
             textViewTermStartDate = itemView.findViewById(R.id.text_view_term_start_date);
             getTextViewTermEndDate = itemView.findViewById(R.id.text_view_term_end_date);
 
-            itemView.setOnClickListener(v -> {
-                int position = getAdapterPosition();
+            itemView.setOnClickListener(view -> {
+                int position = getBindingAdapterPosition();
                 if (listener != null && position != RecyclerView.NO_POSITION) {
                     listener.onItemClick(terms.get(position));
                 }
