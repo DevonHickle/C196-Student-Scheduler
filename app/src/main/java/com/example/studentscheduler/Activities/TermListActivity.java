@@ -27,6 +27,9 @@ import java.util.concurrent.ExecutionException;
 public class TermListActivity extends AppCompatActivity {
     public static final int ADD_TERM_REQ = 1;
 
+    private RecyclerView mRecyclerView;
+    private LinearLayoutManager mLinearLayoutManager;
+    private TermsAdapter mTermsAdapter;
     private TermVM termVM;
 
     @Override
@@ -41,16 +44,16 @@ public class TermListActivity extends AppCompatActivity {
             startActivityForResult(intent, ADD_TERM_REQ);
         });
 
-        RecyclerView recyclerView = findViewById(R.id.termListRecyclerView);
-        LinearLayoutManager manager = new LinearLayoutManager(this);
-        manager.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(manager);
-        recyclerView.setHasFixedSize(true);
-        TermsAdapter termsAdapter = new TermsAdapter();
-        recyclerView.setAdapter(termsAdapter);
+        mRecyclerView = findViewById(R.id.termListRecyclerView);
+        mLinearLayoutManager = new LinearLayoutManager(this);
+        mLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        mRecyclerView.setLayoutManager(mLinearLayoutManager);
+        mRecyclerView.setHasFixedSize(true);
+        mTermsAdapter = new TermsAdapter();
+        mRecyclerView.setAdapter(mTermsAdapter);
 
         termVM = new ViewModelProvider(this).get(TermVM.class);
-        termVM.getAllTerms().observe(this, termsAdapter::setTerms);
+        termVM.getAllTerms().observe(this, mTermsAdapter::setTerms);
 
 
         CourseVM courseVM = new ViewModelProvider(this).get(CourseVM.class);
@@ -61,7 +64,7 @@ public class TermListActivity extends AppCompatActivity {
             }
 
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                TermModel deletedTerm = termsAdapter.getTermAt(viewHolder.getBindingAdapterPosition());
+                TermModel deletedTerm = mTermsAdapter.getTermAt(viewHolder.getBindingAdapterPosition());
 
                 int relatedCourse = 0;
                 try {
@@ -78,9 +81,9 @@ public class TermListActivity extends AppCompatActivity {
                 }
             }
         });
-        itemTouchHelper.attachToRecyclerView(recyclerView);
+        itemTouchHelper.attachToRecyclerView(mRecyclerView);
 
-        termsAdapter.setOnItemClickListener(termEntity -> {
+        mTermsAdapter.setOnItemClickListener(termEntity -> {
             Intent intent = new Intent(TermListActivity.this, TermDetailActivity.class);
             intent.putExtra(TermDetailActivity.EXTRA_ID, termEntity.getId());
             intent.putExtra(TermDetailActivity.EXTRA_TITLE, termEntity.getTitle());
