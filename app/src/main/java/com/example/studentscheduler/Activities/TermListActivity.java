@@ -37,20 +37,20 @@ public class TermListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.term_list);
 
-        FloatingActionButton buttonAddTerm = findViewById(id.btn_add_term);
-        buttonAddTerm.setOnClickListener(view -> {
-            Intent intent = new Intent(TermListActivity.this, AddEditTerms.class);
-            //noinspection deprecation
-            startActivityForResult(intent, ADD_TERM_REQ);
-        });
-
-        mRecyclerView = findViewById(R.id.termListRecyclerView);
+        mRecyclerView = findViewById(R.id.termsListRecyclerView);
+        mRecyclerView.setHasFixedSize(true);
         mLinearLayoutManager = new LinearLayoutManager(this);
         mLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
-        mRecyclerView.setHasFixedSize(true);
         mTermsAdapter = new TermsAdapter();
         mRecyclerView.setAdapter(mTermsAdapter);
+        mTermsAdapter.notifyDataSetChanged();
+
+        FloatingActionButton buttonAddTerm = findViewById(id.btn_add_term);
+        buttonAddTerm.setOnClickListener(view -> {
+            Intent intent = new Intent(TermListActivity.this, AddEditTerms.class);
+            startActivityForResult(intent, ADD_TERM_REQ);
+        });
 
         termVM = new ViewModelProvider(this).get(TermVM.class);
         termVM.getAllTerms().observe(this, mTermsAdapter::setTerms);
