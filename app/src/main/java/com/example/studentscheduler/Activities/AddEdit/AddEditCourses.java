@@ -16,7 +16,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.studentscheduler.R;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 import java.util.Objects;
 
 public class AddEditCourses extends AppCompatActivity {
@@ -169,5 +171,8 @@ public class AddEditCourses extends AppCompatActivity {
     }
 
     private void updateLabel(EditText editText, Calendar calendar) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DATE_FORMAT, Locale.US);
+
+        editText.setText(simpleDateFormat.format(calendar.getTime()));
     }
 }
