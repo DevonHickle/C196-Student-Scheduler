@@ -3,11 +3,15 @@ package com.example.studentscheduler.Activities.AddEdit;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.CheckBox;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.studentscheduler.R;
@@ -28,7 +32,6 @@ public class AddEditCourses extends AppCompatActivity {
     public static final String EXTRA_COURSE_INSTRUCTOR_PHONE = "";
     public static final String EXTRA_COURSE_ID = "";
     public static final String DATE_FORMAT = "MM/dd/yyyy";
-    public static final int REQUEST_EDIT_COURSE = 2;
 
     private Calendar startDate;
     private Calendar endDate;
@@ -88,13 +91,13 @@ public class AddEditCourses extends AppCompatActivity {
                 endDate.get(Calendar.DAY_OF_MONTH)).show());
 
         Intent intent = getIntent();
-        if(intent.hasExtra(EXTRA_COURSE_ID)) {
+        if (intent.hasExtra(EXTRA_COURSE_ID)) {
             setTitle("Edit Course");
             editTitle.setText(intent.getStringExtra(EXTRA_COURSE_TITLE));
-            editStartDate.setText(intent.getStringExtra(EXTRA_COURSE_START_DATE);;
+            editStartDate.setText(intent.getStringExtra(EXTRA_COURSE_START_DATE));
             editEndDate.setText(intent.getStringExtra(EXTRA_COURSE_END_DATE));
 
-            if(intent.getBooleanExtra(EXTRA_COURSE_ALERT, false)){
+            if (intent.getBooleanExtra(EXTRA_COURSE_ALERT, false)) {
                 courseAlarmCheck.performClick();
             }
 
@@ -104,9 +107,67 @@ public class AddEditCourses extends AppCompatActivity {
             editInstructorEmail.setText(intent.getStringExtra(EXTRA_COURSE_INSTRUCTOR_EMAIL));
         } setTitle("Add Course");
 
+    }
+    private void saveCourse() {
+        String courseTitle = editTitle.getText().toString();
+        String courseEndDate = editEndDate.getText().toString();
+        String courseStartDate = editStartDate.getText().toString();
+        boolean isAlarmEnabled = courseAlarmCheck.isChecked();
+        int courseStatus = getRadioStatus(editCourseStatus.getCheckedRadioButtonId());
+        String instructorName = editInstructorName.getText().toString();
+        String instructorEmail = editInstructorEmail.getText().toString();
+        String instructorPhone = editInstructorPhone.getText().toString();
+
+        if(courseTitle.trim().isEmpty() || courseStartDate.trim().isEmpty() || courseEndDate.trim().isEmpty()
+                || courseStatus == -1 || instructorEmail.trim().isEmpty() || instructorName.trim().isEmpty() || instructorPhone.trim().isEmpty()) {
+            Toast.makeText(this, "Unable to save course, please check empty fields", Toast.LENGTH_SHORT).show();
+        }
+
+        Intent intent = new Intent();
+        intent.putExtra(EXTRA_COURSE_TITLE, courseTitle);
+        intent.putExtra(EXTRA_COURSE_START_DATE, courseStartDate);
+        intent.putExtra(EXTRA_COURSE_END_DATE, courseEndDate);
+        intent.putExtra(EXTRA_COURSE_INSTRUCTOR_NAME, instructorName);
+        intent.putExtra(EXTRA_COURSE_INSTRUCTOR_EMAIL, instructorEmail);
+        intent.putExtra(EXTRA_COURSE_INSTRUCTOR_PHONE, instructorPhone);
+        intent.putExtra(EXTRA_COURSE_ALERT, isAlarmEnabled);
+        intent.putExtra(EXTRA_COURSE_STATUS, courseStatus);
+
+        int courseID = getIntent().getIntExtra(EXTRA_COURSE_ID, -1);
+        if(courseID != -1) {
+            intent.putExtra(EXTRA_COURSE_ID, courseID);
+        }
+        setResult(RESULT_OK, intent);
+        finish();
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.add_edit, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(@NonNull MenuItem menuItem) {
+        if (menuItem.getItemId() == R.id.menu_add_edit_save) {
+            saveCourse();
+            return true;
+        }
+        return super.onOptionsItemSelected(menuItem);
+    }
+
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
+    }
+
+    private int getRadioStatus(int checkedRadioButtonId) {
+        return checkedRadioButtonId;
+    }
+
+    private int getBtnId(int intExtra) {
+        return intExtra;
+    }
+
     private void updateLabel(EditText editText, Calendar calendar) {
     }
 }
-
-    private int getBtnId(int intExtra) {
-    }
