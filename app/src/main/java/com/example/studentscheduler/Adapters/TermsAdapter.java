@@ -35,9 +35,7 @@ public class TermsAdapter extends RecyclerView.Adapter<TermsAdapter.TermHolder> 
     }
 
     @Override
-    public int getItemCount() {
-        return terms.size();
-    }
+    public int getItemCount() { return terms != null ? terms.size() : 0; }
 
     @SuppressLint("NotifyDataSetChanged")
     public void setTerms(List<TermModel> terms) {
