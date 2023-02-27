@@ -1,5 +1,6 @@
 package com.example.studentscheduler.Activities.AddEdit;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.studentscheduler.Activities.CourseDetailActivity;
 import com.example.studentscheduler.R;
 
 import java.text.SimpleDateFormat;
@@ -162,12 +164,35 @@ public class AddEditCourses extends AppCompatActivity {
         return true;
     }
 
-    private int getRadioStatus(int checkedRadioButtonId) {
-        return checkedRadioButtonId;
+    @SuppressLint("NonConstantResourceId")
+    private int getRadioStatus(int buttonID) {
+        int status;
+        switch(buttonID) {
+            case R.id.radio_course_status_in_progress:
+                status = CourseDetailActivity.STATUS_IN_PROGRESS;
+                break;
+            case R.id.radio_course_status_completed:
+                status = CourseDetailActivity.STATUS_COMPLETED;
+                break;
+            default:
+                status = -1;
+        }
+        return status;
     }
 
-    private int getBtnId(int intExtra) {
-        return intExtra;
+    private int getBtnId(int id) {
+        int button_id;
+        switch (id) {
+            case CourseDetailActivity.STATUS_IN_PROGRESS:
+                button_id = R.id.radio_course_status_in_progress;
+                break;
+            case CourseDetailActivity.STATUS_COMPLETED:
+                button_id = R.id.radio_course_status_completed;
+                break;
+            default:
+                button_id = -1;
+        }
+        return button_id;
     }
 
     private void updateLabel(EditText editText, Calendar calendar) {
