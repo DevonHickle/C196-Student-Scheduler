@@ -2,6 +2,7 @@ package com.example.studentscheduler.Activities;
 
 import static com.example.studentscheduler.R.id;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -27,21 +28,22 @@ import java.util.concurrent.ExecutionException;
 public class TermListActivity extends AppCompatActivity {
     public static final int ADD_TERM_REQ = 1;
 
-    private RecyclerView mRecyclerView;
-    private LinearLayoutManager mLinearLayoutManager;
     private TermsAdapter mTermsAdapter;
     private TermVM termVM;
 
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.term_list);
 
-        mRecyclerView = findViewById(R.id.termsListRecyclerView);
+        RecyclerView mRecyclerView = findViewById(R.id.termsListRecyclerView);
+
         mRecyclerView.setHasFixedSize(true);
-        mLinearLayoutManager = new LinearLayoutManager(this);
+        LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(this);
         mLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
+
         mTermsAdapter = new TermsAdapter();
         mRecyclerView.setAdapter(mTermsAdapter);
         mTermsAdapter.notifyDataSetChanged();

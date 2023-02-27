@@ -49,17 +49,17 @@ public class TermsAdapter extends RecyclerView.Adapter<TermsAdapter.TermHolder> 
     }
 
     class TermHolder extends RecyclerView.ViewHolder {
-        private TextView textViewTermTitle;
-        private TextView textViewTermStartDate;
-        private TextView getTextViewTermEndDate;
+        private final TextView textViewTermTitle;
+        private final TextView textViewTermStartDate;
+        private final TextView getTextViewTermEndDate;
 
-        public TermHolder(@NonNull View itemView) {
-            super(itemView);
-            textViewTermTitle = itemView.findViewById(R.id.text_view_term_title);
-            textViewTermStartDate = itemView.findViewById(R.id.text_view_term_start_date);
-            getTextViewTermEndDate = itemView.findViewById(R.id.text_view_term_end_date);
+        public TermHolder(@NonNull View view) {
+            super(view);
+            textViewTermTitle = view.findViewById(R.id.text_view_term_title);
+            textViewTermStartDate = view.findViewById(R.id.text_view_term_start_date);
+            getTextViewTermEndDate = view.findViewById(R.id.text_view_term_end_date);
 
-            itemView.setOnClickListener(view -> {
+            itemView.setOnClickListener(v -> {
                 int position = getBindingAdapterPosition();
                 if (listener != null && position != RecyclerView.NO_POSITION) {
                     listener.onItemClick(terms.get(position));

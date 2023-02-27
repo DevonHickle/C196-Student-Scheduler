@@ -15,7 +15,7 @@ public class AssessmentsAlarm extends BroadcastReceiver {
     public static final String ALARM_NOTIFICATION_TEXT = "";
     public static final String ALARM_NOTIFICATION_TYPE = "";
     private static final int NOTIFY_ID_ASSESSMENT_ALARM = 1;
-    private static final String ASSESSMENT_CHANNEL_ID_ALARMS = "CHANNEL_ID_COURSE_ALARMS";
+    public static final String ASSESSMENT_CHANNEL_ID_ALARMS = "CHANNEL_ID_COURSE_ALARMS";
 
     @Override
     public void onReceive(Context context, Intent intent) {
