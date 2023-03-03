@@ -1,8 +1,5 @@
 package com.example.studentscheduler.Activities;
 
-import static com.example.studentscheduler.R.id;
-
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -31,32 +28,30 @@ public class TermListActivity extends AppCompatActivity {
     private TermsAdapter mTermsAdapter;
     private TermVM termVM;
 
-    @SuppressLint("NotifyDataSetChanged")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.term_list);
+
+        FloatingActionButton buttonAddTerm = findViewById(R.id.btn_add_term);
+        buttonAddTerm.setOnClickListener(view -> {
+            Intent intent = new Intent(TermListActivity.this, AddEditTerms.class);
+            startActivityForResult(intent, ADD_TERM_REQ);
+        });
 
         RecyclerView mRecyclerView = findViewById(R.id.termsListRecyclerView);
 
         mRecyclerView.setHasFixedSize(true);
         LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(this);
         mLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        mRecyclerView.setLayoutManager(mLinearLayoutManager);
 
         mTermsAdapter = new TermsAdapter();
+        mRecyclerView.setLayoutManager(mLinearLayoutManager);
         mRecyclerView.setAdapter(mTermsAdapter);
         mTermsAdapter.notifyDataSetChanged();
 
-        FloatingActionButton buttonAddTerm = findViewById(id.btn_add_term);
-        buttonAddTerm.setOnClickListener(view -> {
-            Intent intent = new Intent(TermListActivity.this, AddEditTerms.class);
-            startActivityForResult(intent, ADD_TERM_REQ);
-        });
-
         termVM = new ViewModelProvider(this).get(TermVM.class);
-        termVM.getAllTerms().observe(this, mTermsAdapter::setTerms);
-
+        termVM.getAllTerms().observe(this, termModels -> mTermsAdapter.setTerms(termModels));
 
         CourseVM courseVM = new ViewModelProvider(this).get(CourseVM.class);
 
@@ -96,13 +91,13 @@ public class TermListActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
+        super.onActivityResult(requestCode, resultCode,intent);
         if(requestCode == ADD_TERM_REQ && resultCode == RESULT_OK) {
-            assert data != null;
-            String title = data.getStringExtra(AddEditTerms.EXTRA_TERM_TITLE);
-            String startDate = data.getStringExtra(AddEditTerms.EXTRA_TERM_START_DATE);
-            String endDate = data.getStringExtra(AddEditTerms.EXTRA_TERM_END_DATE);
+            assert intent != null;
+            String title = intent.getStringExtra(AddEditTerms.EXTRA_TERM_TITLE);
+            String startDate = intent.getStringExtra(AddEditTerms.EXTRA_TERM_START_DATE);
+            String endDate = intent.getStringExtra(AddEditTerms.EXTRA_TERM_END_DATE);
 
             TermModel termModel = new TermModel(title, startDate, endDate);
             termVM.insert(termModel);

@@ -14,21 +14,23 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class Repo {
-    private TermDAO termDAO;
-    private LiveData<List<TermModel>> listAllTerms;
+    private final TermDAO termDAO;
+    private final LiveData<List<TermModel>> listAllTerms;
 
-    private CourseDAO courseDAO;
+    private final CourseDAO courseDAO;
     private LiveData<List<CourseModel>> listTermCourses;
 
-    private AssessmentDAO assessmentDAO;
+    private final AssessmentDAO assessmentDAO;
     private LiveData<List<AssessmentModel>> listAssessments;
 
-    private NoteDAO noteDAO;
+    private final NoteDAO noteDAO;
     private LiveData<List<NoteModel>> listAllNotes;
 
     public Repo(Application application) {
         SQLDatabase database = SQLDatabase.getInstance(application);
         termDAO = database.termDAO();
+        listAllTerms = termDAO.getAllTerms();
+
         courseDAO = database.courseDAO();
         assessmentDAO = database.assessmentDAO();
         noteDAO = database.noteDAO();
@@ -108,7 +110,7 @@ public class Repo {
     }
 
     private static class GetAsyncTermCourses extends AsyncTask<Integer, Void, List<CourseModel>> {
-        private CourseDAO courseDAO;
+        private final CourseDAO courseDAO;
 
         private GetAsyncTermCourses(CourseDAO courseDAO) {
             this.courseDAO = courseDAO;
@@ -121,7 +123,7 @@ public class Repo {
 
     // Insert Async Tasks
     private static class InsertAsyncTerm extends AsyncTask<TermModel, Void, Void> {
-        private TermDAO termDAO;
+        private final TermDAO termDAO;
 
         private InsertAsyncTerm(TermDAO termDAO) {
             this.termDAO = termDAO;
@@ -134,7 +136,7 @@ public class Repo {
         }
     }
     private static class InsertAsyncCourse extends AsyncTask<CourseModel, Void, Void> {
-        private CourseDAO courseDAO;
+        private final CourseDAO courseDAO;
 
         private InsertAsyncCourse(CourseDAO courseDAO) {
             this.courseDAO = courseDAO;
@@ -147,7 +149,7 @@ public class Repo {
         }
     }
     private static class InsertAsyncAssessment extends AsyncTask<AssessmentModel, Void, Void> {
-        private AssessmentDAO assessmentDAO;
+        private final AssessmentDAO assessmentDAO;
 
         private InsertAsyncAssessment(AssessmentDAO assessmentDAO) {
             this.assessmentDAO = assessmentDAO;
@@ -160,7 +162,7 @@ public class Repo {
         }
     }
     private static class InsertAsyncNote extends AsyncTask<NoteModel, Void, Void> {
-        private NoteDAO noteDAO;
+        private final NoteDAO noteDAO;
 
         private InsertAsyncNote(NoteDAO noteDAO) {
             this.noteDAO = noteDAO;
@@ -175,7 +177,7 @@ public class Repo {
 
     // Update Async Tasks
     private static class UpdateAsyncTerm extends AsyncTask<TermModel, Void, Void> {
-        private TermDAO termDAO;
+        private final TermDAO termDAO;
 
         private UpdateAsyncTerm(TermDAO termDAO) {
             this.termDAO = termDAO;
@@ -189,7 +191,7 @@ public class Repo {
     }
 
     private static class UpdateAsyncCourse extends AsyncTask<CourseModel, Void, Void> {
-        private CourseDAO courseDAO;
+        private final CourseDAO courseDAO;
 
         private UpdateAsyncCourse(CourseDAO courseDAO) {
             this.courseDAO = courseDAO;
@@ -203,7 +205,7 @@ public class Repo {
     }
 
     private static class UpdateAsyncAssessment extends AsyncTask<AssessmentModel, Void, Void> {
-        private AssessmentDAO assessmentDAO;
+        private final AssessmentDAO assessmentDAO;
 
         private UpdateAsyncAssessment(AssessmentDAO assessmentDAO) {
             this.assessmentDAO = assessmentDAO;
@@ -217,7 +219,7 @@ public class Repo {
     }
 
     private static class UpdateAsyncNote extends AsyncTask<NoteModel, Void, Void> {
-        private NoteDAO noteDAO;
+        private final NoteDAO noteDAO;
 
         private UpdateAsyncNote(NoteDAO noteDAO) {
             this.noteDAO = noteDAO;
@@ -232,7 +234,7 @@ public class Repo {
 
     // Delete Async Tasks
     private static class DeleteAsyncTerm extends AsyncTask<TermModel, Void, Void> {
-        private TermDAO termDAO;
+        private final TermDAO termDAO;
 
         private DeleteAsyncTerm(TermDAO termDAO) {
             this.termDAO = termDAO;
@@ -246,7 +248,7 @@ public class Repo {
     }
 
     private static class DeleteAsyncCourse extends AsyncTask<CourseModel, Void, Void> {
-        private CourseDAO courseDAO;
+        private final CourseDAO courseDAO;
 
         private DeleteAsyncCourse(CourseDAO courseDAO) {
             this.courseDAO = courseDAO;
@@ -260,7 +262,7 @@ public class Repo {
     }
 
     private static class DeleteAsyncAssessment extends AsyncTask<AssessmentModel, Void, Void> {
-        private AssessmentDAO assessmentDAO;
+        private final AssessmentDAO assessmentDAO;
 
         private DeleteAsyncAssessment(AssessmentDAO assessmentDAO) {
             this.assessmentDAO = assessmentDAO;
@@ -274,7 +276,7 @@ public class Repo {
     }
 
     private static class DeleteAsyncNote extends AsyncTask<NoteModel, Void, Void> {
-        private NoteDAO noteDAO;
+        private final NoteDAO noteDAO;
 
         private DeleteAsyncNote(NoteDAO noteDAO) {
             this.noteDAO = noteDAO;
