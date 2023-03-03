@@ -12,22 +12,27 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.studentscheduler.Models.TermModel;
 import com.example.studentscheduler.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class TermsAdapter extends RecyclerView.Adapter<TermsAdapter.TermHolder> {
-    private List<TermModel> terms = new ArrayList<>();
+public class TermsAdapter extends RecyclerView.Adapter<TermsAdapter.ViewHolder> {
+    private List<TermModel> terms;
     private OnItemClickListener listener;
 
+    // RecyclerView recyclerView
+    public TermsAdapter(List<TermModel> terms) {
+        this.terms = terms;
+    }
+
     @NonNull
-    @Override
-    public TermHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_term, parent, false);
-        return new TermHolder(view);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+        View listItem = layoutInflater.inflate(R.layout.single_term, parent, false);
+        ViewHolder viewHolder = new ViewHolder(listItem);
+        return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TermHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         TermModel currentTerm = terms.get(position);
         holder.textViewTermTitle.setText(currentTerm.getTitle());
         holder.textViewTermStartDate.setText(currentTerm.getStartDate());
@@ -46,16 +51,16 @@ public class TermsAdapter extends RecyclerView.Adapter<TermsAdapter.TermHolder> 
         return terms.get(position);
     }
 
-    class TermHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView textViewTermTitle;
         private final TextView textViewTermStartDate;
         private final TextView getTextViewTermEndDate;
 
-        public TermHolder(@NonNull View view) {
+        public ViewHolder(@NonNull View view) {
             super(view);
-            textViewTermTitle = view.findViewById(R.id.text_view_term_title);
-            textViewTermStartDate = view.findViewById(R.id.text_view_term_start_date);
-            getTextViewTermEndDate = view.findViewById(R.id.text_view_term_end_date);
+            this.textViewTermTitle = (TextView) view.findViewById(R.id.text_view_term_title);
+            this.textViewTermStartDate = (TextView) view.findViewById(R.id.text_view_term_start_date);
+            this.getTextViewTermEndDate = (TextView) view.findViewById(R.id.text_view_term_end_date);
 
             itemView.setOnClickListener(v -> {
                 int position = getBindingAdapterPosition();

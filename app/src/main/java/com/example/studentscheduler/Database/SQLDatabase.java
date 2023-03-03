@@ -66,6 +66,7 @@ public abstract class SQLDatabase extends RoomDatabase {
         protected Void doInBackground(Void... voids) {
             termDAO.insert(new TermModel("Term 1", "07/01/2020", "12/30/2020"));
             termDAO.insert(new TermModel("Term 2", "01/01/2021", "06/30/2021"));
+            termDAO.insert(new TermModel("Term 3", "07/01/2021", "12/30/2021"));
 
             courseDAO.insert(new CourseModel(1, "Course 1", "07/01/2020", "12/30/2020",
                         true, CourseDetailActivity.STATUS_IN_PROGRESS, "Devon", "123-456-7890", "devon@test.com"));

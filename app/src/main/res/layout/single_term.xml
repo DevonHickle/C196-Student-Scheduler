@@ -36,12 +36,13 @@
 
         <TextView
             android:id="@+id/text_view_term_end_date"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="67dp"
+            android:layout_height="59dp"
             android:layout_below="@id/text_view_term_title"
-            android:layout_toEndOf="@id/text_view_term_start_date"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="323dp"
+            android:layout_marginTop="2dp"
             android:text="@string/enddate"
-            />
+            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

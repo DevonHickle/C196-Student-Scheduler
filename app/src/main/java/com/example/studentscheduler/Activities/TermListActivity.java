@@ -1,5 +1,6 @@
 package com.example.studentscheduler.Activities;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -24,10 +25,14 @@ import java.util.concurrent.ExecutionException;
 
 public class TermListActivity extends AppCompatActivity {
     public static final int ADD_TERM_REQ = 1;
-
-    private TermsAdapter mTermsAdapter;
+    private final TermsAdapter mTermsAdapter;
     private TermVM termVM;
 
+    public TermListActivity(TermsAdapter mTermsAdapter) {
+        this.mTermsAdapter = mTermsAdapter;
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,19 +44,18 @@ public class TermListActivity extends AppCompatActivity {
             startActivityForResult(intent, ADD_TERM_REQ);
         });
 
-        RecyclerView mRecyclerView = findViewById(R.id.termsListRecyclerView);
+        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.termsListRecyclerView);
 
         mRecyclerView.setHasFixedSize(true);
         LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(this);
         mLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
-        mTermsAdapter = new TermsAdapter();
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
         mRecyclerView.setAdapter(mTermsAdapter);
         mTermsAdapter.notifyDataSetChanged();
 
         termVM = new ViewModelProvider(this).get(TermVM.class);
-        termVM.getAllTerms().observe(this, termModels -> mTermsAdapter.setTerms(termModels));
+        termVM.getAllTerms().observe(this, mTermsAdapter::setTerms);
 
         CourseVM courseVM = new ViewModelProvider(this).get(CourseVM.class);
 
