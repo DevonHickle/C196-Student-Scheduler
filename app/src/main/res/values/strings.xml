@@ -85,4 +85,5 @@
     <string name="instructor_name">Mentor Name</string>
     <string name="phone_number">Phone Number</string>
     <string name="email_address">Email Address</string>
+    <string name="AddTerm" />
 </resources>
