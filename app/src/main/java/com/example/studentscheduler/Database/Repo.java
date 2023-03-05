@@ -32,7 +32,9 @@ public class Repo {
         listAllTerms = termDAO.getAllTerms();
 
         courseDAO = database.courseDAO();
+
         assessmentDAO = database.assessmentDAO();
+
         noteDAO = database.noteDAO();
     }
 
