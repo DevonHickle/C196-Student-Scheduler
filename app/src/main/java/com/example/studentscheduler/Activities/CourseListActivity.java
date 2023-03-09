@@ -1,5 +1,6 @@
 package com.example.studentscheduler.Activities;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -26,8 +27,10 @@ public class CourseListActivity extends AppCompatActivity {
     private int termID;
     private CourseVM courseVM;
 
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
 
+    @SuppressLint("NotifyDataSetChanged")
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.course_list);
 
@@ -43,11 +46,13 @@ public class CourseListActivity extends AppCompatActivity {
         setTitle(termTitle + " Courses");
 
         RecyclerView recyclerView = findViewById(R.id.courseListView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setHasFixedSize(true);
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
         CoursesAdapter coursesAdapter = new CoursesAdapter();
         recyclerView.setAdapter(coursesAdapter);
+        coursesAdapter.notifyDataSetChanged();
 
         courseVM = new ViewModelProvider(this).get(CourseVM.class);
         courseVM.getLiveTermCourses(termID).observe(this, coursesAdapter::setCourses);
