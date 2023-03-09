@@ -39,11 +39,11 @@
         app:layout_constraintTop_toBottomOf="@+id/textview_detailed_term_title" />
 
     <Button
-        android:id="@+id/edit_term_save_button"
+        android:id="@+id/course_list_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
-        android:text="@string/courses"
+        android:text="@string/view_term_courses1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

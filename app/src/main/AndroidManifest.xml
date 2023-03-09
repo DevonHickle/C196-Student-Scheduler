@@ -37,6 +37,14 @@
             android:name=".Activities.AddEdit.AddEditTerms"
             android:launchMode="singleTop"
             android:parentActivityName=".Activities.TermListActivity"/>
+        <activity
+            android:name=".Activities.CourseListActivity"
+            android:launchMode="singleTop"
+            android:parentActivityName=".Activities.TermDetailActivity"/>
+        <activity
+            android:name=".Activities.AddEdit.AddEditCourses"
+            android:launchMode="singleTop"
+            android:parentActivityName=".Activities.CourseListActivity"/>
         <service
             android:name=".Alarms.CoursesAlarm"
             android:enabled="true"/>

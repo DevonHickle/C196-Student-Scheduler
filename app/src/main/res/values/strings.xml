@@ -87,4 +87,6 @@
     <string name="email_address">Email Address</string>
     <string name="AddTerm" />
     <string name="save">Save</string>
+    <string name="view_term_courses">View Term Courses</string>
+    <string name="view_term_courses1">View Term Courses</string>
 </resources>

@@ -1,6 +1,5 @@
 package com.example.studentscheduler.Activities;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -13,21 +12,20 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.studentscheduler.Activities.AddEdit.AddEditCourses;
 import com.example.studentscheduler.Adapters.CoursesAdapter;
 import com.example.studentscheduler.Models.CourseModel;
 import com.example.studentscheduler.R;
 import com.example.studentscheduler.ViewModels.CourseVM;
-import com.example.studentscheduler.Activities.AddEdit.AddEditCourses;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class CourseListActivity extends AppCompatActivity {
-    public static final String EXTRA_COURSE_TERM_ID = "";
-    public static final String EXTRA_COURSE_TERM_TITLE = "";
+    public static final String EXTRA_COURSE_TERM_ID = "com.example.studentscheduler.Activities.TERM_ID";
+    public static final String EXTRA_COURSE_TERM_TITLE = "com.example.studentscheduler.Activities.TERM_TITLE";
 
     private int termID;
     private CourseVM courseVM;
 
-    @SuppressLint("MissingInflatedId")
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);

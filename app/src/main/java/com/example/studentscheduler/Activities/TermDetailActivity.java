@@ -40,7 +40,7 @@ public class TermDetailActivity extends AppCompatActivity {
         textViewTitle = findViewById(R.id.textview_detailed_term_title);
         textViewStartDate = findViewById(R.id.textview_detailed_term_start_date);
         textViewEndDate = findViewById(R.id.textview_detailed_term_end_date);
-        Button courseListButton = findViewById(R.id.edit_term_save_button);
+        Button courseListButton = findViewById(R.id.course_list_button);
 
         Intent intent = getIntent();
         termID = intent.getIntExtra(EXTRA_ID, -1);
@@ -50,7 +50,7 @@ public class TermDetailActivity extends AppCompatActivity {
         textViewEndDate.setText(intent.getStringExtra(EXTRA_END_DATE));
 
         courseListButton.setOnClickListener(view -> {
-            Intent loadCourseList = new Intent(this, AddEditTerms.class);
+            Intent loadCourseList = new Intent(this, CourseListActivity.class);
             loadCourseList.putExtra(CourseListActivity.EXTRA_COURSE_TERM_ID, termID);
             loadCourseList.putExtra(CourseListActivity.EXTRA_COURSE_TERM_TITLE, intent.getStringExtra(EXTRA_TITLE));
             startActivity(loadCourseList);

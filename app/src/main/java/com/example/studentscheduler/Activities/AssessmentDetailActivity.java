@@ -143,18 +143,10 @@ public class AssessmentDetailActivity extends AppCompatActivity {
     }
 
     private String getAssessmentType(int type) {
-        String result;
-        switch(type) {
-            case TYPE_PA:
-                result = "PA";
-                break;
-            case TYPE_OA:
-                result = "OA";
-                break;
-            default:
-                result = "";
-                break;
-        }
-        return result;
+        return switch (type) {
+            case TYPE_PA -> "PA";
+            case TYPE_OA -> "OA";
+            default -> "";
+        };
     }
 }

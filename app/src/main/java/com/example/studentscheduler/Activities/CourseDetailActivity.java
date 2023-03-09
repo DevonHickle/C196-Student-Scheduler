@@ -1,9 +1,9 @@
 package com.example.studentscheduler.Activities;
 
-import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,14 +15,15 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.studentscheduler.Activities.AddEdit.AddEditCourses;
 import com.example.studentscheduler.Alarms.CoursesAlarm;
 import com.example.studentscheduler.Models.CourseModel;
 import com.example.studentscheduler.R;
 import com.example.studentscheduler.ViewModels.CourseVM;
-import com.example.studentscheduler.Activities.AddEdit.AddEditCourses;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.ParseException;
@@ -118,7 +119,7 @@ public class CourseDetailActivity extends AppCompatActivity {
         });
     }
 
-    @SuppressLint("UnspecifiedImmutableFlag")
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -173,8 +174,8 @@ public class CourseDetailActivity extends AppCompatActivity {
                     throw new RuntimeException(e);
                 }
 
-                startCoursePendingIntent = PendingIntent.getBroadcast(this, ALARM_COURSE_START, startCourseAlarm, 0);
-                endCoursePendingIntent = PendingIntent.getBroadcast(this, ALARM_COURSE_END, endCourseAlarm, 0);
+                startCoursePendingIntent = PendingIntent.getBroadcast(this, ALARM_COURSE_START, startCourseAlarm, PendingIntent.FLAG_IMMUTABLE);
+                endCoursePendingIntent = PendingIntent.getBroadcast(this, ALARM_COURSE_END, endCourseAlarm, PendingIntent.FLAG_IMMUTABLE);
 
                 alarmManager.set(AlarmManager.RTC, startCourseCalendarAlert.getTimeInMillis(), startCoursePendingIntent);
                 alarmManager.set(AlarmManager.RTC, endCourseCalendarAlert.getTimeInMillis(), endCoursePendingIntent);
@@ -200,39 +201,28 @@ public class CourseDetailActivity extends AppCompatActivity {
         return true;
     }
 
-    @SuppressLint("NonConstantResourceId")
     public boolean onOptionsItemSelected(@NonNull MenuItem menuItem) {
-        switch(menuItem.getItemId()) {
-            case R.id.course_detail_menu_notes:
-                Intent loadCourseNotes = new Intent(this, CourseNotesActivity.class);
-                loadCourseNotes.putExtra(CourseNotesActivity.EXTRA_COURSE_ID, courseID);
-                loadCourseNotes.putExtra(CourseNotesActivity.EXTRA_COURSE_TITLE, (CharSequence) tvTitle);
-                startActivity(loadCourseNotes);
-                return true;
-            case R.id.course_detail_menu_assessments:
-                Intent loadCourseAssessments = new Intent(this, AssessmentDetailActivity.class);
-                loadCourseAssessments.putExtra(AssessmentListActivity.EXTRA_COURSE_ID, courseID);
-                loadCourseAssessments.putExtra(AssessmentListActivity.EXTRA_COURSE_TITLE, (CharSequence) tvTitle);
-                startActivity(loadCourseAssessments);
-                return true;
-            default:
-                return super.onOptionsItemSelected(menuItem);
+        if (menuItem.getItemId() == R.id.course_detail_menu_notes) {
+            Intent loadCourseNotes = new Intent(this, CourseNotesActivity.class);
+            loadCourseNotes.putExtra(CourseNotesActivity.EXTRA_COURSE_ID, courseID);
+            loadCourseNotes.putExtra(CourseNotesActivity.EXTRA_COURSE_TITLE, (CharSequence) tvTitle);
+            startActivity(loadCourseNotes);
+            return true;
+        } else if (menuItem.getItemId() == R.id.course_detail_menu_assessments) {
+            Intent loadCourseAssessments = new Intent(this, AssessmentDetailActivity.class);
+            loadCourseAssessments.putExtra(AssessmentListActivity.EXTRA_COURSE_ID, courseID);
+            loadCourseAssessments.putExtra(AssessmentListActivity.EXTRA_COURSE_TITLE, (CharSequence) tvTitle);
+            startActivity(loadCourseAssessments);
+            return true;
         }
+        return super.onOptionsItemSelected(menuItem);
     }
 
     public static String getStatus(int status) {
-        String result;
-        switch (status) {
-            case STATUS_IN_PROGRESS:
-                result = "In Progress";
-                break;
-            case STATUS_COMPLETED:
-                result = "Completed";
-                break;
-            default:
-                result = "";
-                break;
-        }
-        return result;
+        return switch (status) {
+            case STATUS_IN_PROGRESS -> "In Progress";
+            case STATUS_COMPLETED -> "Completed";
+            default -> "";
+        };
     }
 }
