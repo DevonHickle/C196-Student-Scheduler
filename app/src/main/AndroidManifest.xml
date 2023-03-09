@@ -29,7 +29,7 @@
         <activity
             android:name=".Activities.TermListActivity"
             android:exported="true"
-            android:label="Back"
+            android:label="All Terms"
             android:launchMode="singleTop"
             android:parentActivityName=".Activities.LandingPage">
         </activity>

@@ -109,12 +109,12 @@ public class AddEditTerms extends AppCompatActivity {
 
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.add_edit, menu);
+        menuInflater.inflate(R.menu.add_edit_save, menu);
         return true;
     }
 
     public boolean onOptionsItemSelected(@NonNull MenuItem menuItem) {
-        if (menuItem.getItemId() == R.id.menu_add_edit_save) {
+        if (menuItem.getItemId() == R.id.add_edit_save) {
             saveNewTerm();
             return true;
         }

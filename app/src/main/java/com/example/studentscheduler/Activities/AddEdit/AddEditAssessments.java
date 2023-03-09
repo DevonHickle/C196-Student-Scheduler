@@ -108,7 +108,7 @@ public class AddEditAssessments extends AppCompatActivity {
 
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.add_edit, menu);
+        menuInflater.inflate(R.menu.add_edit_save, menu);
         return true;
     }
 

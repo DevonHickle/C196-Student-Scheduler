@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginEnd="8dp"
     android:layout_marginStart="8dp"
@@ -15,32 +16,32 @@
             android:id="@+id/text_view_term_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:maxLines="1"
             android:layout_alignParentStart="true"
-            android:text="@string/termTitle"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:layout_marginStart="160dp"
             android:ellipsize="end"
-            />
+            android:maxLines="1"
+            android:text="@string/termTitle"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <TextView
             android:id="@+id/text_view_term_start_date"
-            android:layout_marginEnd="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:layout_below="@id/text_view_term_title"
+            android:layout_alignParentStart="true"
+            android:layout_marginEnd="8dp"
             android:text="@string/startdate"
-            />
+            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
         <TextView
             android:id="@+id/text_view_term_end_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="67dp"
+            android:layout_height="59dp"
             android:layout_below="@id/text_view_term_title"
-            android:layout_toEndOf="@id/text_view_term_start_date"
-            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="320dp"
+            android:layout_marginTop="-1dp"
             android:text="@string/enddate"
-            />
+            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
