@@ -1,6 +1,5 @@
 package com.example.studentscheduler.Activities.AddEdit;
 
-import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,15 +25,15 @@ import java.util.Objects;
 public class AddEditCourses extends AppCompatActivity {
     // TODO: Add Paths
     public static final int REQUEST_ADD_COURSE = 1;
-    public static final String EXTRA_COURSE_TITLE = "";
-    public static final String EXTRA_COURSE_START_DATE = "";
-    public static final String EXTRA_COURSE_END_DATE = "";
-    public static final String EXTRA_COURSE_ALERT = "";
-    public static final String EXTRA_COURSE_STATUS = "";
-    public static final String EXTRA_COURSE_INSTRUCTOR_NAME = "";
-    public static final String EXTRA_COURSE_INSTRUCTOR_EMAIL = "";
-    public static final String EXTRA_COURSE_INSTRUCTOR_PHONE = "";
-    public static final String EXTRA_COURSE_ID = "";
+    public static final String EXTRA_COURSE_TITLE = "com.example.studentscheduler.Activities.COURSE_TITLE";
+    public static final String EXTRA_COURSE_START_DATE = "com.example.studentscheduler.Activities.COURSE_START_DATE";
+    public static final String EXTRA_COURSE_END_DATE = "com.example.studentscheduler.Activities.COURSE_END_DATE";
+    public static final String EXTRA_COURSE_ALERT = "com.example.studentscheduler.Activities.COURSE_ALERT";
+    public static final String EXTRA_COURSE_STATUS = "com.example.studentscheduler.Activities.COURSE_STATUS";
+    public static final String EXTRA_COURSE_INSTRUCTOR_NAME = "com.example.studentscheduler.Activities.COURSE_INSTRUCTOR_NAME";
+    public static final String EXTRA_COURSE_INSTRUCTOR_EMAIL = "com.example.studentscheduler.Activities.COURSE_INSTRUCTOR_EMAIL";
+    public static final String EXTRA_COURSE_INSTRUCTOR_PHONE = "com.example.studentscheduler.Activities.COURSE_INSTRUCTOR_PHONE";
+    public static final String EXTRA_COURSE_ID = "com.example.studentscheduler.Activities.COURSE_ID";
     public static final String DATE_FORMAT = "MM/dd/yyyy";
 
     private Calendar startDate;
@@ -110,7 +109,6 @@ public class AddEditCourses extends AppCompatActivity {
             editInstructorPhone.setText(intent.getStringExtra(EXTRA_COURSE_INSTRUCTOR_PHONE));
             editInstructorEmail.setText(intent.getStringExtra(EXTRA_COURSE_INSTRUCTOR_EMAIL));
         } setTitle("Add Course");
-
     }
     private void saveCourse() {
         String courseTitle = editTitle.getText().toString();
@@ -164,40 +162,24 @@ public class AddEditCourses extends AppCompatActivity {
         return true;
     }
 
-    @SuppressLint("NonConstantResourceId")
     private int getRadioStatus(int buttonID) {
-        int status;
-        switch(buttonID) {
-            case R.id.radio_course_status_in_progress:
-                status = CourseDetailActivity.STATUS_IN_PROGRESS;
-                break;
-            case R.id.radio_course_status_completed:
-                status = CourseDetailActivity.STATUS_COMPLETED;
-                break;
-            default:
-                status = -1;
-        }
-        return status;
+        return switch (buttonID) {
+            case R.id.radio_course_status_in_progress -> CourseDetailActivity.STATUS_IN_PROGRESS;
+            case R.id.radio_course_status_completed -> CourseDetailActivity.STATUS_COMPLETED;
+            default -> -1;
+        };
     }
 
     private int getBtnId(int id) {
-        int button_id;
-        switch (id) {
-            case CourseDetailActivity.STATUS_IN_PROGRESS:
-                button_id = R.id.radio_course_status_in_progress;
-                break;
-            case CourseDetailActivity.STATUS_COMPLETED:
-                button_id = R.id.radio_course_status_completed;
-                break;
-            default:
-                button_id = -1;
-        }
-        return button_id;
+        return switch (id) {
+            case CourseDetailActivity.STATUS_IN_PROGRESS -> R.id.radio_course_status_in_progress;
+            case CourseDetailActivity.STATUS_COMPLETED -> R.id.radio_course_status_completed;
+            default -> -1;
+        };
     }
 
     private void updateLabel(EditText editText, Calendar calendar) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DATE_FORMAT, Locale.US);
-
         editText.setText(simpleDateFormat.format(calendar.getTime()));
     }
 }
