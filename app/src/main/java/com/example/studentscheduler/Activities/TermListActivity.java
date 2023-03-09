@@ -25,12 +25,7 @@ import java.util.concurrent.ExecutionException;
 
 public class TermListActivity extends AppCompatActivity {
     public static final int ADD_TERM_REQ = 1;
-    private final TermsAdapter mTermsAdapter;
     private TermVM termVM;
-
-    public TermListActivity(TermsAdapter mTermsAdapter) {
-        this.mTermsAdapter = mTermsAdapter;
-    }
 
     @SuppressLint("NotifyDataSetChanged")
     @Override
@@ -44,13 +39,14 @@ public class TermListActivity extends AppCompatActivity {
             startActivityForResult(intent, ADD_TERM_REQ);
         });
 
-        RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.termsListRecyclerView);
+        RecyclerView mRecyclerView = findViewById(R.id.termsListRecyclerView);
 
         mRecyclerView.setHasFixedSize(true);
         LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(this);
         mLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
+        final TermsAdapter mTermsAdapter = new TermsAdapter();
         mRecyclerView.setAdapter(mTermsAdapter);
         mTermsAdapter.notifyDataSetChanged();
 

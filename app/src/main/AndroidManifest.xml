@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,29 +14,29 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StudentScheduler"
         tools:targetApi="31">
-       <activity
-            android:name=".Activities.MainActivity"
+        <activity android:name=".Activities.LandingPage"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+        <!-- <activity android:name=".Activities.MainActivity"> -->
         <activity
             android:name=".Activities.TermListActivity"
-            android:label="Terms"
+            android:exported="true"
+            android:label="Back"
             android:launchMode="singleTop"
-            android:parentActivityName=".Activities.MainActivity" />
+            android:parentActivityName=".Activities.LandingPage">
+        </activity>
         <activity
             android:name=".Activities.AddEdit.AddEditTerms"
             android:launchMode="singleTop"
             android:parentActivityName=".Activities.TermListActivity"/>
-        <activity android:name=".Activities.TopNavActivity"/>
         <service
             android:name=".Alarms.CoursesAlarm"
             android:enabled="true"/>
@@ -44,5 +45,10 @@
             android:name=".Alarms.AssessmentsAlarm"
             android:enabled="true"/>
         <receiver android:name=".Alarms.AssessmentsAlarm"/>
+        <activity
+            android:name=".Activities.TermDetailActivity"
+            android:launchMode="singleTop"
+            android:parentActivityName=".Activities.TermListActivity"
+            />
     </application>
 </manifest>

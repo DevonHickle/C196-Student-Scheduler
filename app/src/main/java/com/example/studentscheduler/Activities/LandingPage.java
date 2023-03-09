@@ -8,13 +8,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.studentscheduler.R;
 
-public class TopNavActivity extends AppCompatActivity {
+public class LandingPage extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.top_nav);
+        setContentView(R.layout.activity_main);
 
-        Button viewTermListButton = findViewById(R.id.btn_view_term_list);
+        Button viewTermListButton = findViewById(R.id.enterButton);
         viewTermListButton.setOnClickListener(view -> {
             Intent intent = new Intent(view.getContext(), TermListActivity.class);
             view.getContext().startActivity(intent);

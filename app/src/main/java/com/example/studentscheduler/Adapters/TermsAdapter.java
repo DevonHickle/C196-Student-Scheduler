@@ -12,16 +12,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.studentscheduler.Models.TermModel;
 import com.example.studentscheduler.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TermsAdapter extends RecyclerView.Adapter<TermsAdapter.ViewHolder> {
-    private List<TermModel> terms;
+    private List<TermModel> terms = new ArrayList<>();
     private OnItemClickListener listener;
-
-    // RecyclerView recyclerView
-    public TermsAdapter(List<TermModel> terms) {
-        this.terms = terms;
-    }
 
     @NonNull
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -57,9 +53,9 @@ public class TermsAdapter extends RecyclerView.Adapter<TermsAdapter.ViewHolder> 
 
         public ViewHolder(@NonNull View view) {
             super(view);
-            this.textViewTermTitle = (TextView) view.findViewById(R.id.text_view_term_title);
-            this.textViewTermStartDate = (TextView) view.findViewById(R.id.text_view_term_start_date);
-            this.getTextViewTermEndDate = (TextView) view.findViewById(R.id.text_view_term_end_date);
+            this.textViewTermTitle = view.findViewById(R.id.text_view_term_title);
+            this.textViewTermStartDate = view.findViewById(R.id.text_view_term_start_date);
+            this.getTextViewTermEndDate = view.findViewById(R.id.text_view_term_end_date);
 
             itemView.setOnClickListener(v -> {
                 int position = getBindingAdapterPosition();
