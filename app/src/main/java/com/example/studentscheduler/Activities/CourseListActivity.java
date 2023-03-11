@@ -41,7 +41,7 @@ public class CourseListActivity extends AppCompatActivity {
         });
 
         Intent loadCourseList = getIntent();
-        termID = loadCourseList.getIntExtra(EXTRA_COURSE_TERM_TITLE, -1);
+        termID = loadCourseList.getIntExtra(EXTRA_COURSE_TERM_ID, -1);
         String termTitle = loadCourseList.getStringExtra(EXTRA_COURSE_TERM_TITLE);
         setTitle(termTitle + " Courses");
 

@@ -89,4 +89,10 @@
     <string name="save">Save</string>
     <string name="view_term_courses">View Term Courses</string>
     <string name="view_term_courses1">View Term Courses</string>
+    <string name="set_alarm">Set Alarm</string>
+    <string name="end_date1">End Date</string>
+    <string name="set_alarm2">Set Alarm</string>
+    <string name="course_instructor2">Course Instructor</string>
+    <string name="instructor_name2">Instructor Name</string>
+    <string name="title3">Title</string>
 </resources>

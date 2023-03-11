@@ -13,7 +13,8 @@
         android:layout_height="wrap_content"
         android:maxLines="1"
         android:hint="@string/assessmentName"
-        />
+        android:autofillHints=""
+        android:inputType="name" />
 
     <TextView
         android:layout_width="match_parent"
@@ -55,11 +56,11 @@
         android:focusable="true"
         android:inputType="date"
         android:hint="@string/mmddyyyy"
-        />
+        android:autofillHints="" />
 
     <CheckBox
         android:id="@+id/edit_assessment_alarm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/alarm" />
+        android:text="@string/set_alarm" />
 </androidx.appcompat.widget.LinearLayoutCompat>
