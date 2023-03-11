@@ -35,6 +35,9 @@ import java.util.Objects;
 public class CourseDetailActivity extends AppCompatActivity {
     public static final int STATUS_IN_PROGRESS = 2;
     public static final int STATUS_COMPLETED = 1;
+
+    // TODO: Set Paths
+
     public static final String EXTRA_COURSE_TERM_ID = "";
     public static final String EXTRA_COURSE_ID = "";
     public static final String EXTRA_COURSE_TITLE = "";

@@ -14,7 +14,7 @@
         android:maxLines="1"
         android:hint="@string/assessmentName"
         android:autofillHints=""
-        android:inputType="name" />
+        android:inputType="text" />
 
     <TextView
         android:layout_width="match_parent"

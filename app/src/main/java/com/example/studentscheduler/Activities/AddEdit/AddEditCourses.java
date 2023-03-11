@@ -23,7 +23,6 @@ import java.util.Locale;
 import java.util.Objects;
 
 public class AddEditCourses extends AppCompatActivity {
-    // TODO: Add Paths
     public static final int REQUEST_ADD_COURSE = 1;
     public static final String EXTRA_COURSE_TITLE = "com.example.studentscheduler.Activities.COURSE_TITLE";
     public static final String EXTRA_COURSE_START_DATE = "com.example.studentscheduler.Activities.COURSE_START_DATE";

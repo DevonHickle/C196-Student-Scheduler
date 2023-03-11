@@ -23,15 +23,15 @@ import java.util.Locale;
 import java.util.Objects;
 
 public class AddEditAssessments extends AppCompatActivity {
-    public static final String EXTRA_ASSESSMENT_ID = "";
-    public static final String EXTRA_COURSE_ASSESSMENT_TITLE = "";
-    public static final String EXTRA_COURSE_ASSESSMENT_GOAL_DATE = "";
-    public static final String EXTRA_COURSE_ASSESSMENT_ALERT = "";
-    public static final String EXTRA_ASSESSMENT_TYPE = "";
+    public static final String EXTRA_ASSESSMENT_ID = "com.example.studentscheduler.Activities.COURSE_ASSESSMENT_ID";
+    public static final String EXTRA_COURSE_ASSESSMENT_TITLE = "com.example.studentscheduler.Activities.COURSE_ASSESSMENT_TITLE";
+    public static final String EXTRA_COURSE_ASSESSMENT_GOAL_DATE = "com.example.studentscheduler.Activities.COURSE_ASSESSMENT_GOAL_DATE";
+    public static final String EXTRA_COURSE_ASSESSMENT_ALERT = "com.example.studentscheduler.Activities.COURSE_ASSESSMENT_ALERT";
+    public static final String EXTRA_ASSESSMENT_TYPE = "com.example.studentscheduler.Activities.ASSESSMENT_TYPE";
 
     public static final String DATE_FORMAT = "MM/dd/yyyy";
     public static final int EDIT_ASSESSMENT_REQUEST = 1;
-    public static final String EXTRA_COURSE_ID = "";
+    public static final String EXTRA_COURSE_ID = "com.example.studentscheduler.Activities.COURSE_ID";
 
     private Calendar calGoalDate;
 

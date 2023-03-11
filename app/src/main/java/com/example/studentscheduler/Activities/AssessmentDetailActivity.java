@@ -29,13 +29,13 @@ import java.util.Objects;
 public class AssessmentDetailActivity extends AppCompatActivity {
     public static final int TYPE_PA = 0;
     public static final int TYPE_OA = 1;
-    public static final String EXTRA_ASSESSMENT_COURSE_ID = "";
-    public static final String EXTRA_ASSESSMENT_COURSE_TITLE = "";
-    public static final String EXTRA_ASSESSMENT_ID = "";
-    public static final String EXTRA_ASSESSMENT_TITLE = "";
-    public static final String EXTRA_ASSESSMENT_TYPE = "";
-    public static final String EXTRA_ASSESSMENT_DUE_DATE = "";
-    public static final String EXTRA_ASSESSMENT_ALARM = "";
+    public static final String EXTRA_ASSESSMENT_COURSE_ID = "com.example.studentscheduler.Activities.ASSESSMENT_COURSE_ID";
+    public static final String EXTRA_ASSESSMENT_COURSE_TITLE = "com.example.studentscheduler.Activities.ASSESSMENT_COURSE_TITLE";
+    public static final String EXTRA_ASSESSMENT_ID = "com.example.studentscheduler.Activities.ASSESSMENT_ID";
+    public static final String EXTRA_ASSESSMENT_TITLE = "com.example.studentscheduler.Activities.ASSESSMENT_TITLE";
+    public static final String EXTRA_ASSESSMENT_TYPE = "com.example.studentscheduler.Activities.ASSESSMENT_TYPE";
+    public static final String EXTRA_ASSESSMENT_DUE_DATE = "com.example.studentscheduler.Activities.ASSESSMENT_DUE_DATE";
+    public static final String EXTRA_ASSESSMENT_ALARM = "com.example.studentscheduler.Activities.ASSESSMENT_ALARM";
 
     private AlarmManager alarmManager;
     private PendingIntent alarmIntent;
