@@ -19,7 +19,7 @@ import com.example.studentscheduler.R;
 import com.example.studentscheduler.ViewModels.NoteVM;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class CourseNotesActivity extends AppCompatActivity {
+public class NoteDetailActivity extends AppCompatActivity {
     public static final String EXTRA_NOTE_COURSE_ID =
             "com.example.studentscheduler.Activities.NOTE_COURSE_ID";
     public static final String EXTRA_NOTE_COURSE_TITLE =
@@ -32,8 +32,6 @@ public class CourseNotesActivity extends AppCompatActivity {
             "com.example.studentscheduler.Activities.NOTE_CONTENT";
 
     public static final int EDIT_NOTE_REQUEST = 2;
-    public static final String EXTRA_COURSE_ID = "";
-    public static final String EXTRA_COURSE_TITLE = "";
 
     private NoteVM noteVM;
 
@@ -64,7 +62,7 @@ public class CourseNotesActivity extends AppCompatActivity {
 
         FloatingActionButton buttonEditNote = findViewById(R.id.btn_edit_note);
         buttonEditNote.setOnClickListener(v -> {
-            Intent editNoteIntent = new Intent(CourseNotesActivity.this, AddEditCourseNotes.class);
+            Intent editNoteIntent = new Intent(NoteDetailActivity.this, AddEditCourseNotes.class);
             editNoteIntent.putExtra(AddEditCourseNotes.EXTRA_NOTE_ID, noteID);
             editNoteIntent.putExtra(AddEditCourseNotes.EXTRA_COURSE_ID, courseID);
             editNoteIntent.putExtra(AddEditCourseNotes.EXTRA_COURSE_NOTE_TITLE, noteTitle);

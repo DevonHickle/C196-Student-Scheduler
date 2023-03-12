@@ -203,9 +203,9 @@ public class CourseDetailActivity extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(@NonNull MenuItem menuItem) {
         if (menuItem.getItemId() == R.id.course_detail_menu_notes) {
-            Intent loadCourseNotes = new Intent(this, CourseNotesActivity.class);
-            loadCourseNotes.putExtra(CourseNotesActivity.EXTRA_COURSE_ID, courseID);
-            loadCourseNotes.putExtra(CourseNotesActivity.EXTRA_COURSE_TITLE, String.valueOf(tvTitle));
+            Intent loadCourseNotes = new Intent(this, NoteDetailActivity.class);
+            loadCourseNotes.putExtra(NoteDetailActivity.EXTRA_COURSE_ID, courseID);
+            loadCourseNotes.putExtra(NoteDetailActivity.EXTRA_COURSE_TITLE, String.valueOf(tvTitle));
             startActivity(loadCourseNotes);
             return true;
         } else if (menuItem.getItemId() == R.id.course_detail_menu_assessments) {

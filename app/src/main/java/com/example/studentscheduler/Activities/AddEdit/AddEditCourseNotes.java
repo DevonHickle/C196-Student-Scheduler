@@ -73,7 +73,7 @@ public class AddEditCourseNotes extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(@NonNull MenuItem menuItem) {
-        if(menuItem.getItemId() == R.id.menu_add_edit_save) {
+        if(menuItem.getItemId() == R.id.add_edit_save) {
             saveNote();
             return true;
         } return super.onOptionsItemSelected(menuItem);

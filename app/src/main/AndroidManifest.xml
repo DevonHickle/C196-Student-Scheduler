@@ -58,13 +58,16 @@
             android:launchMode="singleTop"
             android:parentActivityName=".Activities.AssessmentListActivity"/>
         <activity
-            android:name=".Activities.CourseNotesActivity"
+            android:name=".Activities.NoteDetailActivity"
             android:launchMode="singleTop"
             android:parentActivityName=".Activities.CourseDetailActivity"/>
         <activity
             android:name=".Activities.AddEdit.AddEditCourseNotes"
             android:launchMode="singleTop"
-            android:parentActivityName=".Activities.CourseDetailActivity"/>
+            android:enableOnBackInvokedCallback="true"
+            android:label="Course Notes"
+            android:parentActivityName=".Activities.CourseDetailActivity"
+            tools:targetApi="tiramisu" />
         <service
             android:name=".Alarms.CoursesAlarm"
             android:enabled="true"/>
