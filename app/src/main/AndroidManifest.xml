@@ -54,7 +54,15 @@
             android:launchMode="singleTop"
             android:parentActivityName=".Activities.CourseDetailActivity"/>
         <activity
+            android:name=".Activities.AssessmentDetailActivity"
+            android:launchMode="singleTop"
+            android:parentActivityName=".Activities.AssessmentListActivity"/>
+        <activity
             android:name=".Activities.CourseNotesActivity"
+            android:launchMode="singleTop"
+            android:parentActivityName=".Activities.CourseDetailActivity"/>
+        <activity
+            android:name=".Activities.AddEdit.AddEditCourseNotes"
             android:launchMode="singleTop"
             android:parentActivityName=".Activities.CourseDetailActivity"/>
         <service

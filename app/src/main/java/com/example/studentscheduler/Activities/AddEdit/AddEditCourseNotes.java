@@ -2,9 +2,13 @@ package com.example.studentscheduler.Activities.AddEdit;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.studentscheduler.R;
@@ -60,6 +64,19 @@ public class AddEditCourseNotes extends AppCompatActivity {
 
         setResult(RESULT_OK, data);
         finish();
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.add_edit_save, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(@NonNull MenuItem menuItem) {
+        if(menuItem.getItemId() == R.id.menu_add_edit_save) {
+            saveNote();
+            return true;
+        } return super.onOptionsItemSelected(menuItem);
     }
 
     public boolean onSupportNavigateUp() {
