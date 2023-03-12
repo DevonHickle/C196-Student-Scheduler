@@ -21,8 +21,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class AssessmentListActivity extends AppCompatActivity {
     public static final int ADD_ASSESSMENT_REQUEST = 1;
-    public static final String EXTRA_COURSE_ID = "";
-    public static final String EXTRA_COURSE_TITLE = "";
+    public static final String EXTRA_COURSE_ID = "com.example.studentscheduler.Activities.COURSE_ID";
+    public static final String EXTRA_COURSE_TITLE = "com.example.studentscheduler.Activities.COURSE_TITLE";
 
     private int courseID;
     private String courseTitle;

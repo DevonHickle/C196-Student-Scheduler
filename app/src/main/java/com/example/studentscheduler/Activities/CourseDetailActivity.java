@@ -35,19 +35,16 @@ import java.util.Objects;
 public class CourseDetailActivity extends AppCompatActivity {
     public static final int STATUS_IN_PROGRESS = 2;
     public static final int STATUS_COMPLETED = 1;
-
-    // TODO: Set Paths
-
-    public static final String EXTRA_COURSE_TERM_ID = "";
-    public static final String EXTRA_COURSE_ID = "";
-    public static final String EXTRA_COURSE_TITLE = "";
-    public static final String EXTRA_COURSE_START_DATE = "";
-    public static final String EXTRA_COURSE_END_DATE = "";
-    public static final String EXTRA_COURSE_ALERT = "";
-    public static final String EXTRA_COURSE_STATUS = "";
-    public static final String EXTRA_COURSE_INSTRUCTOR_NAME = "";
-    public static final String EXTRA_COURSE_INSTRUCTOR_EMAIL = "";
-    public static final String EXTRA_COURSE_INSTRUCTOR_PHONE = "";
+    public static final String EXTRA_COURSE_TERM_ID = "com.example.studentscheduler.Activities.COURSE_TERM_ID";
+    public static final String EXTRA_COURSE_ID = "com.example.studentscheduler.Activities.COURSE_ID";
+    public static final String EXTRA_COURSE_TITLE = "com.example.studentscheduler.Activities.COURSE_TITLE";
+    public static final String EXTRA_COURSE_START_DATE = "com.example.studentscheduler.Activities.COURSE_START_DATE";
+    public static final String EXTRA_COURSE_END_DATE = "com.example.studentscheduler.Activities.COURSE_END_DATE";
+    public static final String EXTRA_COURSE_ALERT = "com.example.studentscheduler.Activities.COURSE_ALERT";
+    public static final String EXTRA_COURSE_STATUS = "COURSE_STATUS";
+    public static final String EXTRA_COURSE_INSTRUCTOR_NAME = "COURSE_INSTRUCTOR_NAME";
+    public static final String EXTRA_COURSE_INSTRUCTOR_EMAIL = "COURSE_INSTRUCTOR_EMAIL";
+    public static final String EXTRA_COURSE_INSTRUCTOR_PHONE = "COURSE_INSTRUCTOR_PHONE";
 
     public static final int EDIT_COURSE_REQUEST = 5;
     private static final int ALARM_COURSE_START = 50;
