@@ -110,18 +110,18 @@ public class NoteDetailActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.menu_share_text) {
-            shareText();
+            shareNote();
         } else {
             return super.onOptionsItemSelected(item);
         }
         return true;
     }
 
-    private void shareText() {
-        Intent shareText = new Intent(Intent.ACTION_SEND);
-        shareText.putExtra(Intent.EXTRA_TITLE, textViewTitle.getText().toString());
-        shareText.putExtra(Intent.EXTRA_TEXT, textViewContent.getText().toString());
-        shareText.setType("text/plain");
-        startActivity(shareText);
+    private void shareNote() {
+        Intent shareNote = new Intent(Intent.ACTION_SEND);
+        shareNote.putExtra(Intent.EXTRA_TITLE, textViewTitle.getText().toString());
+        shareNote.putExtra(Intent.EXTRA_TEXT, textViewContent.getText().toString());
+        shareNote.setType("text/plain");
+        startActivity(shareNote);
     }
 }

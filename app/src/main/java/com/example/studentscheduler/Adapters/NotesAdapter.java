@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,19 +15,19 @@ import com.example.studentscheduler.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteHolder> {
+public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> {
     private List<NoteModel> note = new ArrayList<>();
     private OnItemClickListener listener;
 
     @NonNull
     @Override
-    public NotesAdapter.NoteHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.note_detail, parent, false);
-        return new NoteHolder(itemView);
+    public NotesAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_note, parent, false);
+        return new ViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NotesAdapter.NoteHolder holder, int position) {
+    public void onBindViewHolder(@NonNull NotesAdapter.ViewHolder holder, int position) {
         NoteModel currentNote = note.get(position);
         holder.textViewNoteTitle.setText(currentNote.getName());
         holder.textViewNoteContent.setText(currentNote.getContent());
@@ -49,11 +48,11 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NoteHolder> 
         return note.get(position);
     }
 
-    class NoteHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView textViewNoteTitle;
         private final TextView textViewNoteContent;
 
-        public NoteHolder(View itemView) {
+        public ViewHolder(View itemView) {
             super(itemView);
             textViewNoteTitle = itemView.findViewById(R.id.text_view_note_title);
             textViewNoteContent = itemView.findViewById(R.id.text_view_note_content);

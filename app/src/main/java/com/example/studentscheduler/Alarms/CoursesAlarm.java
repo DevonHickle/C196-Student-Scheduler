@@ -1,5 +1,6 @@
 package com.example.studentscheduler.Alarms;
 
+import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -16,6 +17,7 @@ public class CoursesAlarm extends BroadcastReceiver {
     public static final String COURSE_CHANNEL_ID_ALARMS = "CHANNEL_ID_COURSE_ALARMS";
     public static final int NOTIFY_ID_COURSE_ALARM = 0;
 
+    @SuppressLint("MissingPermission")
     @Override
     public void onReceive(Context context, Intent intent) {
         NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(context.getApplicationContext());
