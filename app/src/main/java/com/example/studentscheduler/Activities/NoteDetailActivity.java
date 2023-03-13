@@ -44,7 +44,7 @@ public class NoteDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         noteVM = new ViewModelProvider(this).get(NoteVM.class);
-        setContentView(R.layout.notes_list);
+        setContentView(R.layout.note_detail);
 
         textViewTitle = findViewById(R.id.detailed_note_title);
         textViewContent = findViewById(R.id.detailed_note_content);
@@ -67,7 +67,7 @@ public class NoteDetailActivity extends AppCompatActivity {
             editNoteIntent.putExtra(AddEditCourseNotes.EXTRA_COURSE_ID, courseID);
             editNoteIntent.putExtra(AddEditCourseNotes.EXTRA_COURSE_NOTE_TITLE, noteTitle);
             editNoteIntent.putExtra(AddEditCourseNotes.EXTRA_COURSE_NOTE_CONTENT, textViewContent.getText().toString());
-            startActivity(editNoteIntent);
+            startActivityForResult(editNoteIntent, EDIT_NOTE_REQUEST);
         });
     }
 
@@ -81,7 +81,7 @@ public class NoteDetailActivity extends AppCompatActivity {
             String noteContent = data.getStringExtra(AddEditCourseNotes.EXTRA_COURSE_NOTE_CONTENT);
 
             if(noteID == -1) {
-                Toast.makeText(this, "Error, note not saved", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Error, unable to save note", Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -94,9 +94,9 @@ public class NoteDetailActivity extends AppCompatActivity {
             noteEntity.setId(noteID);
             noteVM.update(noteEntity);
 
-            Toast.makeText(this, "Note updated", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Note saved", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, "Note not updated", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Unable to update note", Toast.LENGTH_SHORT).show();
         }
     }
 

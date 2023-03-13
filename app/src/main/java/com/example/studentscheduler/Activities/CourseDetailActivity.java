@@ -41,10 +41,10 @@ public class CourseDetailActivity extends AppCompatActivity {
     public static final String EXTRA_COURSE_START_DATE = "com.example.studentscheduler.Activities.COURSE_START_DATE";
     public static final String EXTRA_COURSE_END_DATE = "com.example.studentscheduler.Activities.COURSE_END_DATE";
     public static final String EXTRA_COURSE_ALERT = "com.example.studentscheduler.Activities.COURSE_ALERT";
-    public static final String EXTRA_COURSE_STATUS = "COURSE_STATUS";
-    public static final String EXTRA_COURSE_INSTRUCTOR_NAME = "COURSE_INSTRUCTOR_NAME";
-    public static final String EXTRA_COURSE_INSTRUCTOR_EMAIL = "COURSE_INSTRUCTOR_EMAIL";
-    public static final String EXTRA_COURSE_INSTRUCTOR_PHONE = "COURSE_INSTRUCTOR_PHONE";
+    public static final String EXTRA_COURSE_STATUS = "com.example.studentscheduler.Activities.COURSE_STATUS";
+    public static final String EXTRA_COURSE_INSTRUCTOR_NAME = "com.example.studentscheduler.Activities.COURSE_INSTRUCTOR_NAME";
+    public static final String EXTRA_COURSE_INSTRUCTOR_EMAIL = "com.example.studentscheduler.Activities.COURSE_INSTRUCTOR_EMAIL";
+    public static final String EXTRA_COURSE_INSTRUCTOR_PHONE = "com.example.studentscheduler.Activities.COURSE_INSTRUCTOR_PHONE";
 
     public static final int EDIT_COURSE_REQUEST = 5;
     private static final int ALARM_COURSE_START = 50;
@@ -204,8 +204,8 @@ public class CourseDetailActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem menuItem) {
         if (menuItem.getItemId() == R.id.course_detail_menu_notes) {
             Intent loadCourseNotes = new Intent(this, NoteDetailActivity.class);
-            loadCourseNotes.putExtra(NoteDetailActivity.EXTRA_COURSE_ID, courseID);
-            loadCourseNotes.putExtra(NoteDetailActivity.EXTRA_COURSE_TITLE, String.valueOf(tvTitle));
+            loadCourseNotes.putExtra(NotesListActivity.EXTRA_COURSE_ID, courseID);
+            loadCourseNotes.putExtra(NotesListActivity.EXTRA_COURSE_TITLE, String.valueOf(tvTitle));
             startActivity(loadCourseNotes);
             return true;
         } else if (menuItem.getItemId() == R.id.course_detail_menu_assessments) {

@@ -95,4 +95,10 @@
     <string name="course_instructor2">Course Instructor</string>
     <string name="instructor_name2">Instructor Name</string>
     <string name="title3">Title</string>
+    <string name="todo5">TODO</string>
+    <string name="test_note_content2">Test Note Content</string>
+    <string name="note_title">Title</string>
+    <string name="todo6">TODO</string>
+    <string name="note_title_detail">Title</string>
+    <string name="test_note_content3">Test Note Content</string>
 </resources>
