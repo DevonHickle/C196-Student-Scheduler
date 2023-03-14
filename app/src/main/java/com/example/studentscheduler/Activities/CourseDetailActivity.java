@@ -203,13 +203,13 @@ public class CourseDetailActivity extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(@NonNull MenuItem menuItem) {
         if (menuItem.getItemId() == R.id.course_detail_menu_notes) {
-            Intent loadCourseNotes = new Intent(this, NoteDetailActivity.class);
+            Intent loadCourseNotes = new Intent(this, NotesListActivity.class);
             loadCourseNotes.putExtra(NotesListActivity.EXTRA_COURSE_ID, courseID);
             loadCourseNotes.putExtra(NotesListActivity.EXTRA_COURSE_TITLE, String.valueOf(tvTitle));
             startActivity(loadCourseNotes);
             return true;
         } else if (menuItem.getItemId() == R.id.course_detail_menu_assessments) {
-            Intent loadCourseAssessments = new Intent(this, AssessmentDetailActivity.class);
+            Intent loadCourseAssessments = new Intent(this, AssessmentListActivity.class);
             loadCourseAssessments.putExtra(AssessmentListActivity.EXTRA_COURSE_ID, courseID);
             loadCourseAssessments.putExtra(AssessmentListActivity.EXTRA_COURSE_TITLE, String.valueOf(tvTitle));
             startActivity(loadCourseAssessments);

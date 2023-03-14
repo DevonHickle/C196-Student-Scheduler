@@ -23,9 +23,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class NotesListActivity extends AppCompatActivity {
     public static final int ADD_NOTE_REQUEST = 1;
     public static final String EXTRA_COURSE_ID = "com.example.studentscheduler.Activities.COURSE_ID";
-    public static final String EXTRA_COURSE_TITLE = "com.example.studentscheduler.Activities.COURSE_TITLE";
+    public static final String EXTRA_COURSE_TITLE = "com.example.studentscheduler.Activities.EXTRA_COURSE_TITLE";
 
-    private int courseID;
     private String courseTitle;
 
     private NoteVM noteVM;
@@ -42,7 +41,7 @@ public class NotesListActivity extends AppCompatActivity {
         });
 
         Intent loadNotesList = getIntent();
-        courseID = loadNotesList.getIntExtra(EXTRA_COURSE_ID, -1);
+        int courseID = loadNotesList.getIntExtra(EXTRA_COURSE_ID, -1);
         courseTitle = loadNotesList.getStringExtra(EXTRA_COURSE_TITLE);
 
         setTitle(courseTitle + " Notes");

@@ -12,11 +12,11 @@ import com.example.studentscheduler.Database.Repo;
 import java.util.List;
 
 public class AssessmentVM extends AndroidViewModel {
-    private Repo repo;
+    private final Repo repo;
 
     public AssessmentVM(@NonNull Application application) {
         super(application);
-        Repo repo = new Repo(application);
+        repo = new Repo(application);
     }
 
     public void insert(AssessmentModel AE) {

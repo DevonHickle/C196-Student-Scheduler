@@ -60,7 +60,6 @@ public class AssessmentListActivity extends AppCompatActivity {
                 return false;
             }
 
-            // TODO: Figure out why this isn't working
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 AssessmentModel deletedAssessment = adapter.getAssessments(viewHolder.getAdapterPosition());
                 assessmentVM.delete(deletedAssessment);
