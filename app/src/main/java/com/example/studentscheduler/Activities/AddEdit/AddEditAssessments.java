@@ -76,9 +76,7 @@ public class AddEditAssessments extends AppCompatActivity {
             editRadioType.check(getTypeBtnID(parentIntent.getIntExtra(EXTRA_ASSESSMENT_TYPE, -1)));
             parentIntent.getBooleanExtra(EXTRA_COURSE_ASSESSMENT_ALERT, false);
             checkAlarmEnabled.performClick();
-        } else {
-            setTitle("Add Assessment");
-        }
+        } setTitle("Add Assessment");
     }
 
     private void saveNewAssessment() {
@@ -90,20 +88,19 @@ public class AddEditAssessments extends AppCompatActivity {
             Toast.makeText(this, "Unable to save assessment, fields are empty", Toast.LENGTH_SHORT).show();
         }
 
-        Intent data = new Intent();
-        data.putExtra(EXTRA_COURSE_ASSESSMENT_TITLE, assessmentTitle);
-        data.putExtra(EXTRA_ASSESSMENT_TYPE, getRadioType(editRadioType.getCheckedRadioButtonId()));
-        data.putExtra(EXTRA_COURSE_ASSESSMENT_GOAL_DATE, assessmentGoalDate);
-        data.putExtra(EXTRA_COURSE_ASSESSMENT_ALERT, alarmEnabled);
+        Intent intent = new Intent();
+        intent.putExtra(EXTRA_COURSE_ASSESSMENT_TITLE, assessmentTitle);
+        intent.putExtra(EXTRA_ASSESSMENT_TYPE, getRadioType(editRadioType.getCheckedRadioButtonId()));
+        intent.putExtra(EXTRA_COURSE_ASSESSMENT_GOAL_DATE, assessmentGoalDate);
+        intent.putExtra(EXTRA_COURSE_ASSESSMENT_ALERT, alarmEnabled);
         int assessmentID = getIntent().getIntExtra(EXTRA_ASSESSMENT_ID, -1);
 
         if(assessmentID != -1) {
-            data.putExtra(EXTRA_ASSESSMENT_ID, assessmentID);
+            intent.putExtra(EXTRA_ASSESSMENT_ID, assessmentID);
         }
 
-        setResult(RESULT_OK, data);
+        setResult(RESULT_OK, intent);
         finish();
-        // Rest of Data puts go here
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

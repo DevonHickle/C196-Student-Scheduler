@@ -40,6 +40,10 @@
             android:launchMode="singleTop"
             android:parentActivityName=".Activities.TermListActivity"/>
         <activity
+            android:name=".Activities.AddEdit.AddEditAssessments"
+            android:launchMode="singleTop"
+            android:parentActivityName=".Activities.AssessmentDetailActivity"/>
+        <activity
             android:name=".Activities.CourseListActivity"
             android:launchMode="singleTop"
             android:parentActivityName=".Activities.TermDetailActivity"/>
